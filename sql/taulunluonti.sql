@@ -11,23 +11,24 @@ CREATE TABLE rekisteri (
 
 -- paivakirjan taulun luonti
 CREATE TABLE tapahtumapaiva (
-  tunnus varchar(10) PRIMARY KEY REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paiva date PRIMARY KEY,
+  tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paino int,
   selite varchar(50)
 );
 
 -- raakaaine taulun luonti
 CREATE TABLE raakaaine (
-  nimi varchar(50) PRIMARY KEY,
-  valmistaja varchar PRIMARY KEY,
+  nimi varchar(50) NOT NULL,
+  valmistaja varchar,
   luokka varchar,
-  selite varchar(50)
+  selite varchar(50),
+  PRIMARY KEY(nimi,valmistaja)
 );
 
 -- paivakirjan rivin luonti
 CREATE TABLE energiansaanti (
-  id serial  PRIMARY KEY REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
+  id serial  PRIMARY KEY,
   paiva date REFERENCES tapahtumapaiva(paiva) ON DELETE CASCADE,
   ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   valmistaja varchar REFERENCES raakaaine(valmistaja) ON DELETE CASCADE,
