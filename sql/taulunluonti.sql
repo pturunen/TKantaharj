@@ -4,9 +4,9 @@ CREATE TABLE rekisteri (
   salasana varchar(18),
   luontipvm date,
   sukupuoli vachar(1),
-  pituus int(3),
-  paino int(3),
-  ika int(3)
+  pituus int,
+  paino int,
+  ika int
 );
 
 
