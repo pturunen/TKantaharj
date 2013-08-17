@@ -19,7 +19,7 @@ CREATE TABLE tapahtumapaiva (
 
 -- raakaaine taulun luonti
 CREATE TABLE raakaaine (
-  nimi varchar(50) NOT NULL,
+  nimi varchar(40) NOT NULL,
   valmistaja varchar,
   luokka varchar,
   selite varchar(50),
