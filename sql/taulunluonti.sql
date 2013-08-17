@@ -30,7 +30,7 @@ CREATE TABLE raakaaine (
 CREATE TABLE energiansaanti (
   id serial  PRIMARY KEY,
   paiva date REFERENCES tapahtumapaiva(paiva) ON DELETE CASCADE,
-  ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
+  ruoka varchar(40) REFERENCES raakaaine(raakaaine_pkey) ON DELETE CASCADE,
   valmistaja varchar REFERENCES raakaaine(valmistaja) ON DELETE CASCADE,
   maara integer
 );
@@ -38,7 +38,7 @@ CREATE TABLE energiansaanti (
 -- perusravintoaine taulun luonti
 CREATE TABLE perusravintoaineet (
   id serial  PRIMARY KEY,
-  nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
+  nimi varchar(40) REFERENCES raakaaine(raakaaine_pkey) ON DELETE CASCADE,
   mittayksikko varchar(4),
   maara integer
 );
@@ -46,7 +46,7 @@ CREATE TABLE perusravintoaineet (
 -- kivennaisjahivenaineet taulun luonti
 CREATE TABLE kivhivenaineet (
   id serial  PRIMARY KEY,
-  nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
+  nimi varchar(40) REFERENCES raakaaine(raakaaine_pkey) ON DELETE CASCADE,
   mittayksikko varchar(4),
   maara integer
 );
