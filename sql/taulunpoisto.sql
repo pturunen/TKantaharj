@@ -1,10 +1,12 @@
 -- lightenyourlife taulujen poisto
-DROP TABLE rekisteri;
 DROP TABLE tapahtumapaiva;
-DROP TABLE raakaaine;
+DROP TABLE rekisteri;
 DROP TABLE energiansaanti;
 DROP TABLE perusravintoaineet;
 DROP TABLE kivhivenaineet;
+DROP TABLE raakaaine;
+
+
 
 
 
