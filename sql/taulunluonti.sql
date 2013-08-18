@@ -1,4 +1,5 @@
-﻿CREATE TABLE rekisteri (
+﻿--rekisteri taulun luonti
+CREATE TABLE rekisteri (
   id serial PRIMARY KEY,
   tunnus varchar(10) NOT NULL UNIQUE,
   salasana varchar(18) NOT NULL,
