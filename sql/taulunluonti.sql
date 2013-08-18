@@ -40,7 +40,7 @@ CREATE TABLE perusravintoaineet (
   id serial ,
   ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
-  mittayksikko varchar(4),
+  mittayksikko varchar(10),
   maara integer,
   PRIMARY KEY(id,ravintotekija)
 );
@@ -50,7 +50,7 @@ CREATE TABLE kivhivenaineet (
   id serial ,
   ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
-  mittayksikko varchar(4),
+  mittayksikko varchar(10),
   maara integer,
   PRIMARY KEY(id,ravintotekija)
 );
