@@ -1,4 +1,4 @@
-﻿INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
+INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
 values ('rasvaton maito','teollisuus','maidot','rasvaa alle 2%');
 
 INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
