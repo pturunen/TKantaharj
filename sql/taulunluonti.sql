@@ -5,8 +5,8 @@ CREATE TABLE rekisteri (
   salasana varchar(18) NOT NULL,
   luontipvm date,
   sukupuoli varchar(1),
-  pituus int,
-  paino int,
+  pituus real,
+  paino real,
   ika int
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE tapahtumapaiva (
   id serial PRIMARY KEY,
   paiva date NOT NULL,
   tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
-  paino int,
+  paino real,
   selite varchar(50)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE energiansaanti (
   id serial  PRIMARY KEY,
   tapid integer REFERENCES tapahtumapaiva(id) ON DELETE CASCADE,
   ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
-  maara integer
+  maara real
 );
 
 -- perusravintoaine taulun luonti
@@ -41,7 +41,7 @@ CREATE TABLE perusravintoaineet (
   ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(10),
-  maara integer,
+  maara real,
   PRIMARY KEY(id,ravintotekija)
 );
 
@@ -51,6 +51,6 @@ CREATE TABLE kivhivenaineet (
   ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(10),
-  maara integer,
+  maara real,
   PRIMARY KEY(id,ravintotekija)
 );
