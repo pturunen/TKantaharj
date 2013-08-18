@@ -1,4 +1,4 @@
-﻿-- lightenyourlife taulujen poisto
+-- lightenyourlife taulujen poisto
 DROP TABLE tapahtumapaiva CASCADE;
 DROP TABLE rekisteri CASCADE;
 DROP TABLE energiansaanti;
