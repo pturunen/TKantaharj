@@ -1,4 +1,4 @@
-﻿-- Kayttaja-taulun luonti
+﻿
 CREATE TABLE rekisteri (
   id serial PRIMARY KEY,
   tunnus varchar(10) NOT NULL UNIQUE,
