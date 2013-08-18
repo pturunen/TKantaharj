@@ -1,12 +1,14 @@
 -- Kayttaja-taulun luonti
 CREATE TABLE rekisteri (
-  tunnus varchar(10) PRIMARY KEY,
-  salasana varchar(18),
+  id serial,
+  tunnus varchar(10) NOT NULL,
+  salasana varchar(18) NOT NULL,
   luontipvm date,
   sukupuoli varchar(1),
   pituus int,
   paino int,
-  ika int
+  ika int,
+  PRIMARY KEY (id,tunnus)
 );
 
 -- paivakirjan taulun luonti
@@ -35,16 +37,20 @@ CREATE TABLE energiansaanti (
 
 -- perusravintoaine taulun luonti
 CREATE TABLE perusravintoaineet (
-  id serial  PRIMARY KEY,
+  id serial  ,
+  ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(4),
-  maara integer
+  maara integer,
+  PRIMARY KEY(id,ravintotekija)
 );
 
 -- kivennaisjahivenaineet taulun luonti
 CREATE TABLE kivhivenaineet (
-  id serial  PRIMARY KEY,
+  id serial ,
+  ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(4),
-  maara integer
+  maara integer,
+  PRIMARY KEY(id,ravintotekija)
 );
