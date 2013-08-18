@@ -30,14 +30,14 @@ CREATE TABLE raakaaine (
 -- paivakirjan rivin luonti
 CREATE TABLE energiansaanti (
   id serial  PRIMARY KEY,
-  paiva date REFERENCES tapahtumapaiva(paiva) ON DELETE CASCADE,
+  tapid integer REFERENCES tapahtumapaiva(id) ON DELETE CASCADE,
   ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   maara integer
 );
 
 -- perusravintoaine taulun luonti
 CREATE TABLE perusravintoaineet (
-  id serial  ,
+  id serial ,
   ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(4),
