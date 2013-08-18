@@ -12,8 +12,8 @@ CREATE TABLE rekisteri (
 
 -- paivakirjan taulun luonti
 CREATE TABLE tapahtumapaiva (
-  id serial PRIMARY KEY
-  paiva date,
+  id serial PRIMARY KEY,
+  paiva date NOT NULL,
   tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paino int,
   selite varchar(50)
