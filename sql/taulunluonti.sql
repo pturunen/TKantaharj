@@ -1,19 +1,19 @@
 -- Kayttaja-taulun luonti
 CREATE TABLE rekisteri (
-  id serial,
-  tunnus varchar(10) NOT NULL,
+  id serial PRIMARY KEY,
+  tunnus varchar(10) NOT NULL UNIQUE,
   salasana varchar(18) NOT NULL,
   luontipvm date,
   sukupuoli varchar(1),
   pituus int,
   paino int,
-  ika int,
-  PRIMARY KEY (id,tunnus)
+  ika int
 );
 
 -- paivakirjan taulun luonti
 CREATE TABLE tapahtumapaiva (
-  paiva date PRIMARY KEY,
+  id serial PRIMARY KEY
+  paiva date NOT NULL,
   tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paino int,
   selite varchar(50)
