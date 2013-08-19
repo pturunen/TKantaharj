@@ -1,4 +1,4 @@
-<?php require_once 'avusteet.php';?>
+//<?php require_once 'avusteet.php';?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,9 +10,9 @@
     <img src="mustaherukka.jpg" title="LightenYourLife" alt="sovelluksen logo" />
     <h1>LightenYourLife</h1>
 	
-/*<?php if (on_kirjautunut()) { ?>
-    <p><a href="kirjautuminen.php?ulos">Kirjaudu ulos</a></p>
-<?php } ?>*/
+//<?php if (on_kirjautunut()) { ?>
+//    <p><a href="kirjautuminen.php?ulos">Kirjaudu ulos</a></p>
+//<?php } ?>
    </body>
 
 

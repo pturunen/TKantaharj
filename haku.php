@@ -1,9 +1,21 @@
 <?php
-require_once 'avusteet.php';
-varmista_kirjautuminen();
+//require_once 'avusteet.php';
+//varmista_kirjautuminen();
 // kyselyn suoritus     
-$kysely = $yhteys->prepare("SELECT * FROM raakaaine");
-$kysely->execute();
+
+session_start();
+
+// yhteyden muodostus tietokantaan
+try {
+    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
+                      "pcturune", "42c747d22fbafe6e");
+} catch (PDOException $e) {
+    die("VIRHE: " . $e->getMessage());
+}
+
+
+$kysely = $yhteys->prepare("SELECT tunnus, paino,pituus FROM rekisteri WHERE id = $_SESSION["kayttaja_id"]);
+$kysely->execute(array($_POST["id"]));
 
 // haettujen rivien tulostus
 echo "<table border>";

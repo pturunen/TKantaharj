@@ -1,3 +1,4 @@
+ 
  <footer>
       <p>LightenYourLife sovellus </p>
     </footer>
