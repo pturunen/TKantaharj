@@ -1,8 +1,6 @@
-etusivu.php
-<?php
+<?php include ("reunat/yreuna.php"); ?>
 $otsikko = 'LightenYourLife etusivu';
-require 'reunat/yreuna.php';
-?>
+
 <h2>LightenYourLife Tervetuloa</h2>
 <p>Ole hyvä ja kirjaudu sisäänn, jos olet rekisteröitynyt käyttäjä.</p>
 <form action="kirjautuminen.php?sisaan" method="POST">
@@ -15,7 +13,7 @@ require 'reunat/yreuna.php';
     <input type="submit" value="Kirjaudu" />
   </fieldset>
 </form>
-<?php require 'reunat/areuna.php'; ?>
+<?php include("reunat/areuna.php"); ?>
 
  
  
