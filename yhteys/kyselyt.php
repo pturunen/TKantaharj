@@ -12,7 +12,6 @@ class Kyselyt {
   public function tunnista($tunnus, $salasana) {
     $kysely = $this->valmistele('SELECT id FROM rekisteri WHERE tunnus = ? AND password = ?');
     if ($kysely->execute(array($tunnus, $salasana))) {
-	  
       return $kysely->fetchObject();
     } else {
       return null;
@@ -129,7 +128,6 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 
 
 $kyselija = new Kyselyt($pdo);

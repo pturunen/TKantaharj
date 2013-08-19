@@ -14,7 +14,7 @@ yreuna.php
     <p><a href="kirjautuminen.php?ulos">Kirjaudu ulos</a></p>
 <?php } ?>
    </body>
-</html>
+
 
  
  
