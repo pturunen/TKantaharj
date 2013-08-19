@@ -2,8 +2,8 @@
 $otsikko = 'LightenYourLife etusivu';
 ?>
 <h2>LightenYourLife Tervetuloa</h2>
-<p>Ole hyvä ja kirjaudu sisäänn, jos olet rekisteröitynyt käyttäjä.</p>
-<form action="kirjautuminen.php?sisaan" method="POST">
+<p>Ole hyvä ja kirjaudu sisään, jos olet rekisteröitynyt käyttäjä.</p>
+<form action="kirjautuminen.php?sisaan=true" method="POST">
   <fieldset>
     <legend>Kirjaudu sisään</legend>
     <label for="tunnus">Käyttäjätunnus:</label>
