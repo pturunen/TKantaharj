@@ -1,4 +1,3 @@
-kirjautuminen.php
 <?php
 require_once 'avusteet.php';
 

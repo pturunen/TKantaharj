@@ -1,4 +1,3 @@
-avusteet.php
 <?php
 require_once 'yhteys/kyselyt.php';
 require_once 'yhteys/sessio.php';
@@ -19,8 +18,6 @@ function varmista_kirjautuminen() {
     ohjaa('etusivu.php');
   }
 }
-
-
 
 ?>
 

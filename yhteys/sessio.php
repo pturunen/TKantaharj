@@ -1,4 +1,3 @@
-sessio.php
 <?php
 
 class Sessio {

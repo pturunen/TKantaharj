@@ -1,4 +1,3 @@
-haku.php
 <?php
 require_once 'avusteet.php';
 varmista_kirjautuminen();

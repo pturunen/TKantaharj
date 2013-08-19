@@ -1,4 +1,3 @@
-kyselyt.php
 <?php
 
 class Kyselyt {

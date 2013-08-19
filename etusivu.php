@@ -1,6 +1,6 @@
-<?php include ("reunat/yreuna.php"); ?>
+<?php include ("reunat/yreuna.php"); 
 $otsikko = 'LightenYourLife etusivu';
-
+?>
 <h2>LightenYourLife Tervetuloa</h2>
 <p>Ole hyvä ja kirjaudu sisäänn, jos olet rekisteröitynyt käyttäjä.</p>
 <form action="kirjautuminen.php?sisaan" method="POST">
