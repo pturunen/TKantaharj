@@ -1,6 +1,6 @@
 haku.php
 <?php
-require_once 'yhteys/yhteys';
+require_once 'avusteet.php';
 varmista_kirjautuminen();
 // kyselyn suoritus     
 $kysely = $yhteys->prepare("SELECT * FROM raakaaine");
