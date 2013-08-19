@@ -16,5 +16,5 @@ if (isset($salasanat[$tunnus])) {
     }
 }
 ?>
-<p>Tunnus tai salasana on väärin!</p>
-<p><a href="kirjautuminen.html">Takaisin</a></p>
+<p>Tunnus tai salasana on vÃ¤Ã¤rin!</p>
+<p><a href="eka.html">Takaisin</a></p>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["kayttaja"])) {
-    header("Location: kirjautuminen.html");
+    header("Location: eka.html");
     die();
 }
 ?>

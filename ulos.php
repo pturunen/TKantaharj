@@ -1,5 +1,5 @@
 <?php
 session_start();
 unset($_SESSION["kayttaja"]);
-header("Location: kirjautuminen.html");
+header("Location: eka.html");
 ?>
