@@ -10,7 +10,7 @@
     <img src="mustaherukka.jpg" title="LightenYourLife" alt="sovelluksen logo" />
     <h1>LightenYourLife</h1>
 <?php if (on_kirjautunut()) { ?>
-    <p><a href="kirjaudu.php?ulos">Kirjaudu ulos</a></p>
+    <p><a href="kirjautuminen.php?ulos">Kirjaudu ulos</a></p>
 <?php } ?>
    </body>
 </html>
