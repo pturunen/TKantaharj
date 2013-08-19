@@ -4,7 +4,7 @@ require 'reunat/yreuna.php';
 ?>
 <h2>LightenYourLife Tervetuloa</h2>
 <p>Ole hyvä ja kirjaudu sisäänn, jos olet rekisteröitynyt käyttäjä.</p>
-<form action="kirjaudu.php?sisaan" method="POST">
+<form action="kirjautuminen.php?sisaan" method="POST">
   <fieldset>
     <legend>Kirjaudu sisään</legend>
     <label for="tunnus">Käyttäjätunnus:</label>

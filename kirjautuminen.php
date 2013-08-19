@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Kirjautuminen LightenYourLife sovellukseen</title>
-  </head>
-  <body>
-    <form action="salasana.php" method="post">
-	Tunnus: <input type ="text" name="tunnus"> <br>
-	Salasana: <input type ="password" name="salasana"> <br>
-	<input type="submit" value="Kirjaudu">
-	</form>
-  </body>
-</html>
+<?php
+require_once 'yhteys/yhteys.php';
+
+
+if (isset($_GET['sisaan'])) {
+  $kayttaja = $kyselija->tunnista($_POST['tunnus'], $_POST['salasana']);
+  if ($kayttaja) {
+    $sessio->kayttaja_id = $kayttaja->id;
+    ohjaa('haku.php');
+  } else {
+    ohjaa('etusivu.php');
+  }
+} elseif (isset($_GET['ulos'])) {
+  unset($sessio->kayttaja_id);
+  ohjaa('haku.php');
+} else {
+  die('Laiton toiminto!');
+}
+

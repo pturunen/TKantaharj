@@ -1,5 +1,25 @@
 yhteys.php
 <?php
+require_once 'kyselyt.php';
+require_once 'sessio.php';
+
+
+function ohjaa($osoite) {
+  header("Location: $osoite");
+  exit;
+}
+
+function on_kirjautunut() {
+  global $sessio;
+  return isset($sessio->kayttaja_id);
+}
+
+function varmista_kirjautuminen() {
+  if (!on_kirjautunut()) {
+    ohjaa('kirjautuminen.php');
+  }
+}
+
 
 // yhteyden muodostus tietokantaan
 try {

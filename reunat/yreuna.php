@@ -1,4 +1,4 @@
-<?php require_once 'yhteys/yhteys.php';
+<?php require_once 'yhteys/yhteys.php';?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,6 +12,8 @@
 <?php if (on_kirjautunut()) { ?>
     <p><a href="kirjaudu.php?ulos">Kirjaudu ulos</a></p>
 <?php } ?>
+   </body>
+</html>
 
  
  
