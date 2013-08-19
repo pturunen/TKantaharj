@@ -10,7 +10,7 @@ class Kyselyt {
   }
 
   public function tunnista($tunnus, $salasana) {
-    $kysely = $this->valmistele('SELECT id FROM users WHERE username = ? AND password = ?');
+    $kysely = $this->valmistele('SELECT id FROM rekisteri WHERE tunnus = ? AND password = ?');
     if ($kysely->execute(array($tunnus, $salasana))) {
       return $kysely->fetchObject();
     } else {
@@ -118,7 +118,7 @@ class Kyselyt {
 
 }
 
-require dirname(__file__).'/../asetukset.php';
+//require dirname(__file__).'/../asetukset.php';
 
 $kyselija = new Kyselyt($pdo);
 
