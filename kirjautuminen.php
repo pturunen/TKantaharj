@@ -6,6 +6,7 @@ if (isset($_GET['sisaan'])) {
   $kayttaja = $kyselija->tunnista($_POST['tunnus'], $_POST['salasana']);
   if ($kayttaja) {
     $sessio->kayttaja_id = $kayttaja->id;
+	echo "<p> tunnarit tunnistettu</p> "
     ohjaa('haku.php');
   } else {
     ohjaa('etusivu.php');

@@ -17,16 +17,16 @@ class Kyselyt {
       return null;
     }
   }
-/*
+
   public function oletus_lista($kayttaja_id) {
-    $kysely = $this->valmistele('SELECT * FROM lists WHERE user_id = ? AND is_default IS TRUE');
+    $kysely = $this->valmistele('SELECT * FROM raakaaine ');
     if ($kysely->execute(array($kayttaja_id))) {
       return $kysely->fetchObject();
     } else {
       return null;
     }
   }
-
+/*
   public function hae_lista($kayttaja_id, $lista_id) {
     $kysely = $this->valmistele('SELECT * FROM lists WHERE user_id = ? AND id = ?');
     if ($kysely->execute(array($kayttaja_id, $lista_id))) {
