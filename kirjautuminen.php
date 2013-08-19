@@ -1,7 +1,7 @@
 <?php
 require_once 'avusteet.php';
 
-if (isset($_GET['sisaan'])) {
+if (isset($_POST['tunnus']) && isset($_POST['salasana']) {
   $kayttaja = $kyselija->tunnista($_POST['tunnus'], $_POST['salasana']);
   if ($kayttaja) {
     $sessio->kayttaja_id = $kayttaja->id;
@@ -9,9 +9,9 @@ if (isset($_GET['sisaan'])) {
   } else {
     header("Location: etusivu.php");
   }
-} elseif (isset($_GET['ulos'])) {
+} else {
   unset($sessio->kayttaja_id);
-  header("Location: haku.php");
+  header("Location: etusivu.php");
 } else {
   die('Laiton toiminto!');
 }
