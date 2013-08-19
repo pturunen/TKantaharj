@@ -119,7 +119,7 @@ class Kyselyt {
 
 }
 
-require dirname(__file__).'/yhteys.php';
+require dirname(__file__).'./yhteys.php';
 
 $kyselija = new Kyselyt($pdo);
 
