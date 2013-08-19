@@ -1,3 +1,4 @@
+etusivu.php
 <?php
 $otsikko = 'LightenYourLife etusivu';
 require 'reunat/yreuna.php';
