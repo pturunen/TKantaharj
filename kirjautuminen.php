@@ -12,7 +12,7 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-if (isset($_POST['tunnus']) && isset($_POST['salasana']) {
+if (isset($_POST['tunnus'])) {
         $kysely = $yhteys->prepare('SELECT * FROM rekisteri WHERE tunnus = ? and password = ?');
 		$kysely->execute(array($_POST["tunnus"], $_POST["password"]));
 		$kayttaja = $kysely->fetchObject();

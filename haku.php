@@ -13,7 +13,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 
-
+echo "yhteyden muodostuksen jalkeen";
 $kysely = $yhteys->prepare("SELECT tunnus, paino,pituus FROM rekisteri WHERE id = $_SESSION["kayttaja_id"]);
 $kysely->execute(array($_POST["id"]));
 
