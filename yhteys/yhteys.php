@@ -25,7 +25,7 @@ function on_kirjautunut() {
 
 function varmista_kirjautuminen() {
   if (!on_kirjautunut()) {
-    ohjaa('kirjautuminen.php');
+    ohjaa('etusivu.php');
   }
 }
 
