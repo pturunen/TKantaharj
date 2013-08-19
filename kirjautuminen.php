@@ -1,5 +1,6 @@
 <?php
-require_once 'yhteys/yhteys.php';
+require_once 'yhteys/kyselyt.php';
+require_once 'yhteys/sessio.php';
 
 
 if (isset($_GET['sisaan'])) {
