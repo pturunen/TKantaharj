@@ -12,6 +12,7 @@ class Kyselyt {
   public function tunnista($tunnus, $salasana) {
     $kysely = $this->valmistele('SELECT id FROM rekisteri WHERE tunnus = ? AND password = ?');
     if ($kysely->execute(array($tunnus, $salasana))) {
+	  
       return $kysely->fetchObject();
     } else {
       return null;
@@ -19,7 +20,7 @@ class Kyselyt {
   }
 
   public function oletus_lista($kayttaja_id) {
-    $kysely = $this->valmistele('SELECT * FROM raakaaine ');
+    $kysely = $this->valmistele('SELECT * FROM rekisteri WHERE id = ? ');
     if ($kysely->execute(array($kayttaja_id))) {
       return $kysely->fetchObject();
     } else {
@@ -118,7 +119,7 @@ class Kyselyt {
 
 }
 
-//require dirname(__file__).'/../asetukset.php';
+require dirname(__file__).'/yhteys.php';
 
 $kyselija = new Kyselyt($pdo);
 
