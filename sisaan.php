@@ -11,8 +11,8 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['tunnus'])) {
-    $kysely = $yhteys->prepare('SELECT * FROM rekisteri WHERE tunnus = ? and password = ?');
-    $kysely->execute(array($_POST["tunnus"], $_POST["password"]));
+    $kysely = $yhteys->prepare('SELECT * FROM rekisteri WHERE tunnus = ? and salasana = ?');
+    $kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
 	$kayttaja = $kysely->fetchObject();
 	if ($kayttaja) {
 		$_SESSION["kayttaja_id"] = $kayttaja->id;
