@@ -17,4 +17,4 @@ if (isset($_GET['sisaan'])) {
 } else {
   die('Laiton toiminto!');
 }
-
+?>
