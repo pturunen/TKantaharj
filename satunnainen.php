@@ -9,7 +9,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+echo "ennen kyselya";
 if (isset($_POST['nimi'])) {
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi = ?');
     $kysely->execute($_POST["nimi"]);
