@@ -13,7 +13,7 @@ if (isset($_POST['nimi'])) {
     
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
-   $kysely->execute();
+
 		echo "<table border>";
 		<form action ="alitaulut.php" method="post">
 		
