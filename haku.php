@@ -12,7 +12,13 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // kyselyn suoritus     
 $kysely = $yhteys->prepare("SELECT * FROM raakaaine WHERE nimi = ?");
+if ($kysely){
 $kysely->execute($_POST["nimi"]);
+}
+else {
+echo "pieleen meni";
+die();
+}
 
 // haettujen rivien tulostus
 echo "<table border>";
