@@ -10,7 +10,7 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['nimi'])) {
-    $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ? ');
+    $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  '%maito%'');
     $kysely->execute(array($_POST[%nimi%"]));
 		echo "<table border>";
 		while ($rivi = $kysely->fetch()) {
