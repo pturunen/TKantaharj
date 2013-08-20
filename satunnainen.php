@@ -18,6 +18,7 @@ echo "kysely ";
 	echo "alkaa tulostus rivi kerrallaan";
 		echo "<table border>";
 		while ($rivi = $kysely->fetch()) {
+		echo "while lauseen sisalla";
 			echo "<tr>";
 			echo "<td>" . $rivi["nimi"] . "</td>";
 			echo "<td>" . $rivi["valmistaja"] . "</td>";
@@ -25,6 +26,7 @@ echo "kysely ";
 			echo "<td>" . $rivi["selite"] . "</td>";
 			echo "</tr>";
 		}
+		echo "while lauseen ulkona lopussa";
 		echo "</table>";
 	//die();
 } 
