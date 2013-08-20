@@ -10,9 +10,10 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['nimi'])) {
-    $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi = ?');
-    $kysely->execute($_POST["nimi"]);
+//if (isset($_POST['nimi'])) {
+    $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi = "rasvaton maito"');
+	$kysely->execute();
+    //$kysely->execute($_POST["nimi"]);
 	$kayttaja = $kysely->fetchObject();
 	if ($kayttaja) {
 		echo "<table border>";
@@ -27,7 +28,7 @@ if (isset($_POST['nimi'])) {
 		echo "</table>";
 	}
 	//die();
-} 
+//} 
 
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
