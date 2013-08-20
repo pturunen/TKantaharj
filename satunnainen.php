@@ -10,7 +10,7 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
-<form action="haku.php?htmlspecialchars(SID)" method="post">
+<form action="haku.php" method="post">
 <p>Tuotteen nimi: <br>
 <input type="text" name="nimi"></p>
 <input type="submit" value="Hae">
