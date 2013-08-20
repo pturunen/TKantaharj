@@ -9,11 +9,28 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-?>
-<form action="haku.php" method="post">
-<p>Tuotteen nimi: <br>
-<input type="text" name="nimi"></p>
-<input type="submit" value="Hae">
-</form>
 
-<p><a href="eka.html">Takaisin</a></p>
+if (isset($_POST['nimi'])) {
+    $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi = ?');
+    $kysely->execute($_POST["nimi"]);
+	$kayttaja = $kysely->fetchObject();
+	if ($kayttaja) {
+		echo "<table border>";
+		while ($rivi = $kysely->fetch()) {
+			echo "<tr>";
+			echo "<td>" . " roskaa" . $rivi["nimi"] . "</td>";
+			echo "<td>" . $rivi["valmistaja"] . "</td>";
+			echo "<td>" . $rivi["luokka"] . "</td>";
+			echo "<td>" . $rivi["selite"] . "</td>";
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	//die();
+} 
+
+?>
+<p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
+<p><a href="eka.html">Takaisin etusivulle</a></p>
+
+

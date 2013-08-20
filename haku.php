@@ -30,4 +30,4 @@ echo "</table>";
 //}
 ?>
 
-<p><a href="eka.html">Takaisin</a></p>;
+<p><a href="eka.html">Takaisin</a></p>
