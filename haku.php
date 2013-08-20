@@ -24,7 +24,7 @@ die();
 echo "<table border>";
 while ($rivi = $kysely->fetch()) {
     echo "<tr>";
-    echo "<td>" . $rivi["nimi"] . "</td>";
+    echo "<td>" . " roskaa" . $rivi["nimi"] . "</td>";
     echo "<td>" . $rivi["valmistaja"] . "</td>";
 	echo "<td>" . $rivi["luokka"] . "</td>";
 	echo "<td>" . $rivi["selite"] . "</td>";
