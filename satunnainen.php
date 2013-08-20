@@ -15,14 +15,18 @@ if (isset($_POST['nimi'])) {
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
    $kysely->execute();
 		echo "<table border>";
+		<form action ="alitaulut.php" method="post">
+		
 		while ($rivi = $kysely->fetch()) {
-			echo "<tr>";
+		    <input type="submit" value="<td>" . $rivi["nimi"] . "</td>" . "<td>" . $rivi["valmistaja"] . "</td>" . "<td>" . $rivi["luokka"] . "</td>" . "<td>" . $rivi["selite"] . "</td>";
+			/*echo "<tr>";
 			echo "<td>" . $rivi["nimi"] . "</td>";
 			echo "<td>" . $rivi["valmistaja"] . "</td>";
 			echo "<td>" . $rivi["luokka"] . "</td>";
 			echo "<td>" . $rivi["selite"] . "</td>";
-			echo "</tr>";
+			echo "</tr>";*/
 		}
+		</form>
 		echo "</table>";
 } 
 
