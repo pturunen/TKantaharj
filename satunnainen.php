@@ -14,10 +14,8 @@ if (isset($_POST['nimi'])) {
 echo "kysely ";
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi = ?');
     $kysely->execute($_POST["nimi"]);
-	$kayttaja = $kysely->fetchObject();
-	echo "kyselyn jalkeen ";
-	if ($kayttaja) {
-	echo "if lause true";
+	//$kayttaja = $kysely->fetchObject();
+	echo "alkaa tulostus rivi kerrallaan";
 		echo "<table border>";
 		while ($rivi = $kysely->fetch()) {
 			echo "<tr>";
@@ -28,7 +26,6 @@ echo "kysely ";
 			echo "</tr>";
 		}
 		echo "</table>";
-	}
 	//die();
 } 
 
