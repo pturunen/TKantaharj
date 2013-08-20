@@ -15,11 +15,13 @@ echo "kysely ";
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi = ?');
     $kysely->execute($_POST["nimi"]);
 	$kayttaja = $kysely->fetchObject();
+	echo "kyselyn jalkeen ";
 	if ($kayttaja) {
+	echo "if lause true";
 		echo "<table border>";
 		while ($rivi = $kysely->fetch()) {
 			echo "<tr>";
-			echo "<td>" . " roskaa" . $rivi["nimi"] . "</td>";
+			echo "<td>" . $rivi["nimi"] . "</td>";
 			echo "<td>" . $rivi["valmistaja"] . "</td>";
 			echo "<td>" . $rivi["luokka"] . "</td>";
 			echo "<td>" . $rivi["selite"] . "</td>";
