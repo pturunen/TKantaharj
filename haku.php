@@ -11,10 +11,11 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // kyselyn suoritus   
-  if (isset($_POST["nimi"])) {
-$kysely = $yhteys->prepare("SELECT * FROM raakaaine WHERE nimi = ?");
-$kysely->execute($_POST["nimi"]);
+//  if (isset($_POST["nimi"])) {
+$kysely = $yhteys->prepare("SELECT * FROM raakaaine WHERE nimi = 'rasvaton maito'");
 
+//$kysely->execute($_POST["nimi"]);
+$kysely->execute();
 // haettujen rivien tulostus
 echo "<table border>";
 while ($rivi = $kysely->fetch()) {
@@ -26,7 +27,7 @@ while ($rivi = $kysely->fetch()) {
     echo "</tr>";
 }
 echo "</table>";
-}
+//}
 ?>
 
 <p><a href="eka.html">Takaisin</a></p>;
