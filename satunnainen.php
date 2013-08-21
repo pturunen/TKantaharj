@@ -7,8 +7,8 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-header("Location: satunnainen.html");
 if (isset($_POST['nimi'])){
+header("Location: satunnainen.html");
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	if (!$kysely){
