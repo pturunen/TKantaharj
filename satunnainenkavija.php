@@ -11,9 +11,9 @@ if (isset($_POST['nimi'])){
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $tulos = $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	$rivi = $kysely->fetch();
-	if (empty($rivi)){//tämä on väärä parametri tarkastukseen, boolean false ilmeisesti palautuu vain errorirsta ei jos ei riveja
+	if (empty($rivi)){
 	header("Location: satunnainen.html");
-	die();
+	die("Tuotetta ei loytynyt!");
 	}
 	else {
 		echo "<ul>";
