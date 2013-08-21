@@ -12,7 +12,7 @@ if (isset($_POST['nimi'])){
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	if (!$kysely){
 	header("Location: satunnainen.html");
-	
+	die();
 	}
 	else {
 	//echo "<table border>";
