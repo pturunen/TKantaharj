@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL); ini_set('display_errors', 'On'); 
+
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
@@ -14,7 +14,7 @@ if (isset($_POST['nimi'])) {
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	if (!$kysely){
-	header('Location: satunnainen.html');
+	header('Location: haku.php');
 	die();
 	}
 	else {
