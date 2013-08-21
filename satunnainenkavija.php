@@ -10,12 +10,11 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['nimi'])){
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $tulos = $kysely->execute(array("%". $_POST['nimi'] . "%"));
-	if (!$tulos){
+	if (!$tulos){//tämä on väärä parametri tarkastukseen, boolean false ilmeisesti palautuu vain errorirsta ei jos ei riveja
 	header("Location: satunnainen.html");
 	die();
 	}
 	else {
-	    huhhuh
 		echo "<ul>";
 		while ($rivi = $kysely->fetch()) {
 			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
