@@ -15,7 +15,7 @@ if (isset($_POST['nimi'])) {
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	if (!$kysely){
 	header('Location: satunnainen.html');
-	die("Tuotetta ei löytynyt!");
+	die();
 	}
 	else {
 	//echo "<table border>";
