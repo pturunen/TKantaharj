@@ -29,7 +29,7 @@ if (isset($_POST['nimi'])) {
 			$muuttuja2 = $rivi["valmistaja"];
 			//$kokorivi = "{$muuttuja} {$muuttuja2}";
 			//echo "<a href=alitaulut.php>$kokorivi</a>";
-			echo "<a href="alitaulut.php">$rivi["nimi"]</a>"
+			echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>"
 
 			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . " "</a></p>
 	
