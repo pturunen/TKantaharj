@@ -35,3 +35,6 @@ if (isset($_POST['nimi'])){
 	}
 }
 ?>
+<p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
+<p><a href="eka.html">Takaisin etusivulle</a></p>
+
