@@ -30,7 +30,7 @@ if (isset($_POST['nimi'])) {
 			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
 			echo "<a href=\"alitaulut.php\">$muuttuja</a>";
 		}
-		echo "</ul>;
+		echo "</ul>";
 		//echo "</table>";
 } 
 
