@@ -16,6 +16,7 @@ if (isset($_POST['nimi'])){
 	die();
 	}
 	else {
+	    echo "haku tuotti tulosta";
 		echo "<ul>";
 		while ($rivi = $kysely->fetch()) {
 			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
