@@ -26,12 +26,11 @@ if (isset($_POST['nimi'])) {
 			echo "<td>" . $rivi["selite"] . "</td>";
 			echo "</tr>";
 			
-			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . "?> "</a></p>
+			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . " "</a></p>
 	
 		}
-		</form>
+		//</form>
 		echo "</table>";
-	</ul>
 } 
 
 ?>
