@@ -13,6 +13,7 @@ if (isset($_POST['nimi'])) {
     
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
+	if ($rivi){
 	
 		//echo "<table border>";
 		echo "<ul>";
@@ -32,7 +33,7 @@ if (isset($_POST['nimi'])) {
 		}
 		echo "</ul>";
 		//echo "</table>";
-} 
+	} 
 
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
