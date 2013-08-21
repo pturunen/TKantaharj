@@ -34,7 +34,7 @@ if (isset($_POST['nimi'])) {
 		//echo "</table>";
 	}
 	else {
-	echo "Tuotetta ei löytynyt! <br>";
+	echo "Tuotetta ei löytynyt!";
 	header("Location: satunnainen.html");
 	die();
 	}
