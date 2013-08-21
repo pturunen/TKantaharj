@@ -13,12 +13,11 @@ if (isset($_POST['nimi'])) {
     
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
-	if (!empty($rivi)){
+	if ($kysely){
 	
 		//echo "<table border>";
 		echo "<ul>";
 		while ($rivi = $kysely->fetch()) {
-			
 			/*echo "<tr>";
 			echo "<td>" . $rivi["nimi"] . "</td>";
 			echo "<td>" . $rivi["valmistaja"] . "</td>";
@@ -33,12 +32,14 @@ if (isset($_POST['nimi'])) {
 		}
 		echo "</ul>";
 		//echo "</table>";
-	} 
-	else {
-	echo "Tuotetta ei löydy <br>";
-	
 	}
-
+	else {
+	echo "Tuotetta ei löytynyt! <br>";
+	header("Location: satunnainen.html");
+	die();
+	}
+		
+}
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
