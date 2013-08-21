@@ -25,12 +25,11 @@ if (isset($_POST['nimi'])) {
 			echo "<td>" . $rivi["luokka"] . "</td>";
 			echo "<td>" . $rivi["selite"] . "</td>";
 			echo "</tr>";
-			$muuttuja = $rivi["nimi"];
-			$muuttuja2 = $rivi["valmistaja"];
-			//$kokorivi = "{$muuttuja} {$muuttuja2}";
+			$muuttuja = $rivi["nimi"] . ' ' . $rivi["valmistaja"] . ' ' . $rivi["luokka"] . $rivi["selite"] . '\n';
+			
 			//echo "<a href=alitaulut.php>$kokorivi</a>";
-			//echo "<a href="alitaulut.php">$rivi["nimi"]</a>";
-			echo "<a href=\"alitaulut.php\">$muuttuja</a>";
+			echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
+			//toimiva echo "<a href=\"alitaulut.php\">$muuttuja</a>";
 			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . " "</a></p>
 	
 		}
