@@ -14,7 +14,7 @@ if (isset($_POST['nimi'])) {
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	if (!$kysely){
-	header('Location: haku.php');
+	header("Location: \'haku.php\'");
 	die();
 	}
 	else {
