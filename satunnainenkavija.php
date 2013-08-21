@@ -15,23 +15,14 @@ if (isset($_POST['nimi'])){
 	die();
 	}
 	else {
-	//echo "<table border>";
 		echo "<ul>";
 		while ($rivi = $kysely->fetch()) {
-			/*echo "<tr>";
-			echo "<td>" . $rivi["nimi"] . "</td>";
-			echo "<td>" . $rivi["valmistaja"] . "</td>";
-			echo "<td>" . $rivi["luokka"] . "</td>";
-			echo "<td>" . $rivi["selite"] . "</td>";
-			echo "</tr>";
-			*/
 			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
 			echo "<li>";
 			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
 			echo "<a href=\"alitaulut.php\">$muuttuja</a>";
 		}
 		echo "</ul>";
-		//echo "</table>";
 	}
 }
 ?>
