@@ -25,7 +25,8 @@ if (isset($_POST['nimi'])) {
 			echo "<td>" . $rivi["luokka"] . "</td>";
 			echo "<td>" . $rivi["selite"] . "</td>";
 			echo "</tr>";
-			
+			Echo "<a href=alitaulut.php>$rivi["nimi"]</a>"
+
 			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . " "</a></p>
 	
 		}
