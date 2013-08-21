@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+header('Location: satunnainen.html');
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
