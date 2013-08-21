@@ -14,27 +14,24 @@ if (isset($_POST['nimi'])) {
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	
-		echo "<table border>";
-		//<form action ="alitaulut.php" method="post">
+		//echo "<table border>";
+		echo "<ul>";
 		while ($rivi = $kysely->fetch()) {
-		//   <input type="submit" value=""<td>" . $rivi["nimi"] . "</td>" . "<td>" . $rivi["valmistaja"] . "</td>" . "<td>" . $rivi["luokka"] . "</td>" . "<td>" . $rivi["selite"] . "</td>"";
 			
-			echo "<tr>";
+			/*echo "<tr>";
 			echo "<td>" . $rivi["nimi"] . "</td>";
 			echo "<td>" . $rivi["valmistaja"] . "</td>";
 			echo "<td>" . $rivi["luokka"] . "</td>";
 			echo "<td>" . $rivi["selite"] . "</td>";
 			echo "</tr>";
-			$muuttuja = $rivi["nimi"] . ' ' . $rivi["valmistaja"] . ' ' . $rivi["luokka"] . $rivi["selite"] . '\n';
-			
-			//echo "<a href=alitaulut.php>$kokorivi</a>";
+			*/
+			$muuttuja = $rivi["nimi"] . ' ' . $rivi["valmistaja"] . ' ' . $rivi["luokka"] . $rivi["selite"] . "<br>";
+			echo "<li>";
 			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
 			echo "<a href=\"alitaulut.php\">$muuttuja</a>";
-			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . " "</a></p>
-	
 		}
-		//</form>
-		echo "</table>";
+		echo "</ul>;
+		//echo "</table>";
 } 
 
 ?>
