@@ -10,8 +10,8 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['nimi'])){
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
-    $kysely->execute(array("%". $_POST['nimi'] . "%"));
-	if (!$kysely){
+    $tulos = $kysely->execute(array("%". $_POST['nimi'] . "%"));
+	if (!$tulos){
 	header("Location: satunnainen.html");
 	die();
 	}
