@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
                       "pcturune", "42c747d22fbafe6e");
@@ -25,6 +26,7 @@ if (isset($_POST['nimi'])){
 		echo "</ul>";
 	}
 }
+ob_end_flush();
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
