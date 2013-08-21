@@ -28,8 +28,8 @@ if (isset($_POST['nimi'])) {
 			$muuttuja = $rivi["nimi"] . ' ' . $rivi["valmistaja"] . ' ' . $rivi["luokka"] . $rivi["selite"] . '\n';
 			
 			//echo "<a href=alitaulut.php>$kokorivi</a>";
-			echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
-			//toimiva echo "<a href=\"alitaulut.php\">$muuttuja</a>";
+			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
+			echo "<a href=\"alitaulut.php\">$muuttuja</a>";
 			//<p><a href="alitaulut.php"> <?" " . $rivi["nimi"] . " " . $rivi["valmistaja"] . " " . $rivi["luokka"] . " " . $rivi["selite"] . " "</a></p>
 	
 		}
