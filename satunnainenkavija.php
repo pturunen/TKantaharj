@@ -12,7 +12,7 @@ if (isset($_POST['nimi'])){
     $tulos = $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	$rivi = $kysely->fetch();
 	if (empty($rivi)){
-	header("Location: satunnainen.html");
+	header("Location: satunnainenvirheilmoitus.html");
 	die("Tuotetta ei loytynyt!");
 	}
 	else {
