@@ -1,10 +1,10 @@
 <?php
 session_start();
-/*if (!isset($_SESSION["kayttaja"])) {
+if (!isset($_SESSION["kayttaja"])) {
     header("Location: eka.html");
     die();
 }
-*/
+
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
@@ -58,3 +58,4 @@ if (isset($_POST['nimip'])) {
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
+<p><a href="ulos.php">Kirjaudu ulos</a></p>

@@ -14,8 +14,9 @@ if (isset($_GET['nimiparametri'])) {
     $kysely->execute(array($_GET['nimiparametri']));
 	$rivi = $kysely->fetch();
 	if (empty($rivi)){
-	header("Location: satunnainenvirheilmoitus.html");
-	die();
+	//header("Location: satunnainenvirheilmoitus.html");
+	//die();
+	echo "Ravintoaineella ei lisätietoja";
 	}
 	else {
 		echo "<table border>";

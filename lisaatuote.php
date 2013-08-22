@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*if (!isset($_SESSION["kayttaja"])) {
+if (!isset($_SESSION["kayttaja"])) {
     header("Location: eka.html");
     die();
-}*/
+}
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
@@ -33,14 +33,14 @@ if (isset($_POST['nimi'])) {
 		echo "</table>";
     $muuttuja = 'Lisätietoja ravintoaineelle: ' . $rivi["nimi"] . "<br>";
 	$nimiparametri = $rivi["nimi"];
-	//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$nimiparametri\">$muuttuja</a>";
 	} 
 	else {
 	echo "Tuotteen lisääminen ei onnistunut";
 	}
 } 
 ?>
-<p><a href="lisaaalituote.html?<?php $nimiparametri ?>">Lisaa ravintoaineelle lisätietoja</a></p>
+<p><a href="lisaaalituote.html?nimiparametri=<?php $nimiparametri ?>">Lisaa ravintoaineelle lisätietoja</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
+<p><a href="ulos.php">Kirjaudu ulos</a></p>
