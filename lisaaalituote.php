@@ -33,9 +33,9 @@ if (isset($_POST['nimip'])) {
 		echo "</table>";
 		} 
 }
- if (isset($_POST['nimik'])) {
-    $kysely = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
-    $onnistuikok = $kysely->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
+ /*if (isset($_POST['nimik'])) {
+    $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
+    $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	if ($onnistuikok) {
 		$kyselyk = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
 		$tulos = $kyselyk->execute(array($_POST['nimik']));
@@ -52,7 +52,7 @@ if (isset($_POST['nimip'])) {
 		}
 		echo "</table>";
 		} 
-}
+}*/
 ?>
 <p><a href="lisaaalituote.html">Lisaa uusia lisätietoja</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
