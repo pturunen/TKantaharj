@@ -32,7 +32,7 @@ if (isset($_GET['nimiparametri'])) {
 	}
 } 
 else {
-echo "Ravintoaineella ei lisätietoja";
+echo "Ravintoaineella ei lisÃ¤tietoja";
 }
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
