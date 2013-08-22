@@ -54,7 +54,7 @@ if (isset($_POST['nimip'])) {
 		} 
 }*/
 ?>
-<p><a href="lisaaalituote.html">Lisaa uusia lisätietoja</a></p>
+<p><a href="lisaaalituote.html">Lisaa uusia lisÃ¤tietoja</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.html">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
