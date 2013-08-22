@@ -15,40 +15,40 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['nimip'])) {
     $kysely = $yhteys->prepare('INSERT INTO perusravintoaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["ravintotekijap"], $_POST["nimip"],$_POST["maarap"],$_POST["mittayksikkop"]));
-	if ($onnistuiko) {
+    $onnistuikop = $kysely->execute(array($_POST["ravintotekijap"], $_POST["nimip"],$_POST["maarap"],$_POST["mittayksikkop"]));
+	if ($onnistuikop) {
 		$kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
 		$tulos = $kysely->execute(array($_POST['nimip']));
-		$rivi = $kysely->fetch();
+		$rivip = $kysely->fetch();
 		echo "<table border>";
-		while ($rivi) {
+		while ($rivip) {
 			echo "<tr>";
-			echo "<td>" . $rivi["ravintotekijap"] . "</td>";
-			echo "<td>" . $rivi["nimip"] . "</td>";
-			echo "<td>" . $rivi["maarap"] . "</td>";
-			echo "<td>" . $rivi["mittayksikkop"] . "</td>";
+			echo "<td>" . $rivip["ravintotekijap"] . "</td>";
+			echo "<td>" . $rivip["nimip"] . "</td>";
+			echo "<td>" . $rivip["maarap"] . "</td>";
+			echo "<td>" . $rivip["mittayksikkop"] . "</td>";
 			echo "</tr>";
-			$rivi = $kysely->fetch();
+			$rivip = $kysely->fetch();
 		}
 		echo "</table>";
 		} 
 }
  if (isset($_POST['nimik'])) {
     $kysely = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
-	if ($onnistuiko) {
-		$kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
-		$tulos = $kysely->execute(array($_POST['nimik']));
-		$rivi = $kysely->fetch();
+    $onnistuikokk = $kysely->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
+	if ($onnistuikok) {
+		$kyselyk = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
+		$tulos = $kyselyk->execute(array($_POST['nimik']));
+		$rivik = $kyselyk->fetch();
 		echo "<table border>";
-		while ($rivi) {
+		while ($rivik) {
 			echo "<tr>";
-			echo "<td>" . $rivi["ravintotekijak"] . "</td>";
-			echo "<td>" . $rivi["nimik"] . "</td>";
-			echo "<td>" . $rivi["maarak"] . "</td>";
-			echo "<td>" . $rivi["mittayksikkok"] . "</td>";
+			echo "<td>" . $rivik["ravintotekijak"] . "</td>";
+			echo "<td>" . $rivik["nimik"] . "</td>";
+			echo "<td>" . $rivik["maarak"] . "</td>";
+			echo "<td>" . $rivik["mittayksikkok"] . "</td>";
 			echo "</tr>";
-			$rivi = $kysely->fetch();
+			$rivik = $kyselyk->fetch();
 		}
 		echo "</table>";
 		} 
