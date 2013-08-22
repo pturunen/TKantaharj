@@ -1,5 +1,6 @@
 <?php
 session_start();
+header(<"Content-Type: text/html; charset=UTF-8" />);
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
