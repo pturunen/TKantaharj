@@ -1,5 +1,6 @@
 <?php
 session_start();
+header("Content-Type: text/html; charset=UTF-8");
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
                       "pcturune", "42c747d22fbafe6e");
