@@ -33,7 +33,7 @@ if (isset($_POST['nimip'])) {
 		echo "</table>";
 		} 
 }
- /*if (isset($_POST['nimik'])) {
+ if (isset($_POST['nimik'])) {
     $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	if ($onnistuikok) {
@@ -43,18 +43,18 @@ if (isset($_POST['nimip'])) {
 		echo "<table border>";
 		while ($rivik) {
 			echo "<tr>";
-			echo "<td>" . $rivik["ravintotekijak"] . "</td>";
-			echo "<td>" . $rivik["nimik"] . "</td>";
-			echo "<td>" . $rivik["maarak"] . "</td>";
-			echo "<td>" . $rivik["mittayksikkok"] . "</td>";
+			echo "<td>" . $rivik["ravintotekija"] . "</td>";
+			echo "<td>" . $rivik["nimi"] . "</td>";
+			echo "<td>" . $rivik["maara"] . "</td>";
+			echo "<td>" . $rivik["mittayksikko"] . "</td>";
 			echo "</tr>";
 			$rivik = $kyselyk->fetch();
 		}
 		echo "</table>";
 		} 
-}*/
+}
 ?>
 <p><a href="lisaaalituote.html">Lisaa uusia lisätietoja</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
-<p><a href="haku.html">Tuotehakuun</a></p>
+<p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
