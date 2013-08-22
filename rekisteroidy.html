@@ -1,27 +1,56 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>LightenYourLife rekisteröityminen käyttäjäksi</title>
+  </head>
+  <body>
+    <img src="mustaherukka.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
+	<h1> LightenYourLife -- Tervetuloa!</h>
+    <p> Rekisteröimällä itsellesi tunnuksen ja salasanan, saat seuraavat edut:</p>
+	<p> Voit lisätä raaka-aineita tietokantaan </p>
+	<p> Voit myös muokata tai poistaa raaka-aineita tietokannasta </p>
+	<p> Voit luoda päivittäin päiväkirjaa nauttimistasi elintarvikkeista ja </p>
+	<p> näet päivittäisen energia ja myös muiden ravinteiden saantimäärät </p>
+	<p></p>
+    <p></p>
+    <form action="rekisteroidy.php" method="POST">
+      <fieldset>
+        <legend>Kirjaudu sisään</legend>
+        <label for="tunnus">Käyttäjätunnus:</label>
+        <input type="text" name="tunnus" />
+        <label for="salasana">Salasana:</label>
+        <input type="password" name="salasana" /> <br>
+		<input type="radio" name="sukupuoli" value="female" checked> nainen <br>
+		<input type="radio" name="sukupuoli" value="male" > mies <br>
+		<select name="pituus">
+		<option value="130"> 130
+		<option value="140"> 140
+		<option value="150"> 150
+		<option value="155"> 155
+		<option value="160" selected> 160
+		<option value="165"> 165
+		<option value="170"> 170
+		<option value="175"> 175
+		<option value="180"> 180
+		<option value="185"> 185
+		<option value="190"> 190
+		<option value="195"> 195
+		<option value="200"> 200
+		<option value="205"> 205
+		<option value="210"> 210
+		</select>
+		<label for="paino">Paino:</label>
+		<input type="text" name="paino" />
+		<label for="ika">Ika:</label>
+		<input type="text" name="ika" />
+        <input type="submit" value="Kirjaudu" />
+      </fieldset>
+    </form>
+    <footer>
+	<p><a href="rekisteroidy.html">Peruuta</a></p>
+    <p><a href="eka.html">Takaisin etusivulle</a></p>
+    </footer>
+  </body>
+</html>
 
-// yhteyden muodostus tietokantaan
-try {
-    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
-                      "pcturune", "42c747d22fbafe6e");
-} catch (PDOException $e) {
-    die("VIRHE: " . $e->getMessage());
-}
-$yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-if (isset($_POST['tunnus'])) {
-    $kysely = $yhteys->prepare('SELECT * FROM rekisteri WHERE tunnus = ? and salasana = ?');
-    $kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
-	$kayttaja = $kysely->fetchObject();
-	if ($kayttaja) {
-		$_SESSION["kayttaja_id"] = $kayttaja->id;
-		$_SESSION["kayttaja"] = $_POST["tunnus"];
-		header("Location: sisalto.php");
-		die();
-		} 
-} 
-
-?>
-<p>Tunnus tai salasana on väärin!</p>
-<p><a href="eka.html">Takaisin</a></p>
