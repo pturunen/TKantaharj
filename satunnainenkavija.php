@@ -20,7 +20,7 @@ if (isset($_POST['nimi'])){
 		while ($rivi ) {
 			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
 			echo "<li>";
-			$nimiparametri = $rivi["nimi"];
+			$nimiparametri = htmlspecialchars$rivi["nimi"];
 			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
 			echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?$nimiparametri\">$muuttuja</a>";
 			$rivi = $kysely->fetch();
