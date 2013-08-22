@@ -13,16 +13,24 @@ if (isset($_GET['nimiparametri'])) {
     
     $kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi = ?');
     $kysely->execute(array($_GET['nimiparametri']));
+	$rivi = $kysely->fetch();
+	if (empty($rivi)){
+	header("Location: satunnainenvirheilmoitus.html");
+	die();
+	}
+	else {
 		echo "<table border>";
-		while ($rivi = $kysely->fetch()) {
+		while ($rivi) {
 			echo "<tr>";
 			echo "<td>" . $rivi["nimi"] . "</td>";
 			echo "<td>" . $rivi["ravintotekija"] . "</td>";
 			echo "<td>" . $rivi["maara"] . "</td>";
 			echo "<td>" . $rivi["mittayksikko"] . "</td>";
 			echo "</tr>";
+			$rivi = $kysely->fetch()
 		}
 		echo "</table>";
+	}
 } 
 ?>
 <p><a href="satunnainen.php">Takaisin listaukseen</a></p>
