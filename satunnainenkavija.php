@@ -21,7 +21,7 @@ if (isset($_POST['nimi'])){
 			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
 			echo "<li>";
 			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
-			echo "<a style=\"color: blue\"  href=\"alitaulut.php\">$muuttuja</a>";
+			echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php\">$muuttuja</a>";
 			$rivi = $kysely->fetch();
 		}
 		echo "</ul>";
