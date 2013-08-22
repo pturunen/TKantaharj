@@ -23,7 +23,7 @@ if (isset($_POST['nimi'])){
 			echo "<li>";
 			$nimiparametri = $rivi["nimi"];
 			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
-			echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?$nimiparametri\">$muuttuja</a>";
+			echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$nimiparametri\">$muuttuja</a>";
 			$rivi = $kysely->fetch();
 		}
 		echo "</ul>";

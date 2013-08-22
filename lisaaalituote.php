@@ -37,7 +37,7 @@ if (isset($_POST['nimip'])) {
     $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	if ($onnistuikok) {
-		$kyselyk = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
+		$kyselyk = $yhteys->prepare('SELECT * FROM kivhivenaineet WHERE nimi =  ?');
 		$tulos = $kyselyk->execute(array($_POST['nimik']));
 		$rivik = $kyselyk->fetch();
 		echo "<table border>";

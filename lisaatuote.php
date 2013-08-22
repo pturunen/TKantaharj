@@ -31,14 +31,16 @@ if (isset($_POST['nimi'])) {
 			$rivi = $kysely->fetch();
 		}
 		echo "</table>";
-	//$nimiparametri = $rivi["nimi"];
-	//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?$nimiparametri\">$muuttuja</a>";
+    $muuttuja = 'Lisätietoja ravintoaineelle: ' . $rivi["nimi"] . "<br>";
+	$nimiparametri = $rivi["nimi"];
+	//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$nimiparametri\">$muuttuja</a>";
 	} 
 	else {
 	echo "Tuotteen lisääminen ei onnistunut";
 	}
 } 
 ?>
+<p><a href="lisaaalituote.html?<?php $nimiparametri ?>">Lisaa ravintoaineelle lisätietoja</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
