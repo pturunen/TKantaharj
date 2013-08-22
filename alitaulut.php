@@ -30,9 +30,11 @@ if (isset($_GET['nimiparametri'])) {
 			$rivi = $kysely->fetch();
 		}
 		echo "</table>";
+	
 	}
+	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
-    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$rivi["nimi"]\">Lisaa ravintoaineelle lisätietoja</a>";
+    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$nimiparametri\">Lisaa ravintoaineelle lisätietoja</a>";
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote</a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos</a>";
 	}
