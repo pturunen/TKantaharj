@@ -35,7 +35,7 @@ if (isset($_POST['nimip'])) {
 }
  if (isset($_POST['nimik'])) {
     $kysely = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
-    $onnistuikokk = $kysely->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
+    $onnistuikok = $kysely->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	if ($onnistuikok) {
 		$kyselyk = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
 		$tulos = $kyselyk->execute(array($_POST['nimik']));
