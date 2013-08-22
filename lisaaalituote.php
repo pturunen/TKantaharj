@@ -23,10 +23,10 @@ if (isset($_POST['nimip'])) {
 		echo "<table border>";
 		while ($rivip) {
 			echo "<tr>";
-			echo "<td>" . $rivip["ravintotekijap"] . "</td>";
-			echo "<td>" . $rivip["nimip"] . "</td>";
-			echo "<td>" . $rivip["maarap"] . "</td>";
-			echo "<td>" . $rivip["mittayksikkop"] . "</td>";
+			echo "<td>" . $rivip["ravintotekija"] . "</td>";
+			echo "<td>" . $rivip["nimi"] . "</td>";
+			echo "<td>" . $rivip["maara"] . "</td>";
+			echo "<td>" . $rivip["mittayksikko"] . "</td>";
 			echo "</tr>";
 			$rivip = $kysely->fetch();
 		}
