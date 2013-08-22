@@ -5,16 +5,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
   <body>
-    <img src="mustaherukka.jpg" title="LightenYourLife" width="310" height="220" alt="LightenYourLife" />
+    <img src="mustaherukka.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
     <form action="lisaatuote.php" method="post">
-      Ravintoaine      :
+	  <label for="nimi">Ravintoaine:</label>
       <input type="text" name="nimi"> <br>
-	  Valmistaja       :
-	  <input type="text" name="valmistaja"> <br>
-	  Raaka-aine luokka:
+	  <label for="valmistaja">Valmistaja:</label>
+	  <input type="text" name="valmistaja" value="Ei tiedossa"> <br>
+	  <label for="luokka">Raaka-aine luokka:</label>
 	  <input type="text" name="luokka"> <br>
-	  Selite           :
-	  <input type="text" name="selite"> <br>
+	  <label for="selite">Selite:</label>
+	  <input type="text" name="selite" value="vapaa muotoinen"> <br>
       <input type="submit" value="Hae">
     </form>
 
