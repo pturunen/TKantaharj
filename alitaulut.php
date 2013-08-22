@@ -35,6 +35,11 @@ if (isset($_GET['nimiparametri'])) {
 else {
 echo "Ravintoaineella ei lisätietoja";
 }
+if (isset($_SESSION["kayttaja"])) {
+    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=<?php $rivi[\"nimi\"] ?>\">Lisaa ravintoaineelle lisätietoja</a>";
+    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote</a>";
+	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos</a>";
+}
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
