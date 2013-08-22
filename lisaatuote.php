@@ -17,11 +17,22 @@ if (isset($_POST['nimi'])) {
     $kysely = $yhteys->prepare('INSERT INTO raakaaine (nimi,valmistaja,luokka,selite) VALUES (?,?,?,?)');
     $onnistuiko = $kysely->execute(array($_POST["nimi"], $_POST["valmistaja"],$_POST["luokka"],$_POST["selite"]));
 	if ($onnistuiko) {
-		header("Location: satunnainenkavija.php");
-		die();
+		$kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi =  ?');
+		$tulos = $kysely->execute(array($_POST['nimi']));
+		$rivi = $kysely->fetch();
+		echo "<table border>";
+		while ($rivi) {
+			echo "<tr>";
+			echo "<td>" . $rivi["nimi"] . "</td>";
+			echo "<td>" . $rivi["valmistaja"] . "</td>";
+			echo "<td>" . $rivi["luokka"] . "</td>";
+			echo "<td>" . $rivi["selite"] . "</td>";
+			echo "</tr>";
+			$rivi = $kysely->fetch();
+		}
+		echo "</table>";
 		} 
 } 
-
 ?>
 <p>Tunnus tai salasana on väärin!</p>
 <p><a href="eka.html">Takaisin</a></p>
