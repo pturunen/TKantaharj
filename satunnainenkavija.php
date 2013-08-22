@@ -16,7 +16,7 @@ if (isset($_POST['nimi'])){
 	die();
 	}
 	else {
-		echo "<ul style="color: blue" >";
+		echo "<ul style=\"color: blue\" >";
 		while ($rivi ) {
 			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
 			echo "<li>";
