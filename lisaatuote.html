@@ -3,26 +3,18 @@
   <head>
     <title>Ravintoaineen lisäys</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script>
-	function displayResult()
-	{
-	document.getElementById("b1").style.position="absolute";
-	document.getElementById("b1").style.top="100px";
-	document.getElementById("b1").style.left="400px";
-	}
- </script>
   </head>
   <body>
     <img src="mustaherukka.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
     <form action="lisaatuote.php" method="post">
 	  <label for="nimi">Ravintoaine	:</label>
-      <input type="text" name="nimi" id="b1"> <br>
+      <input type="text" name="nimi" style="position: absolute" style="top:100px" style="left:300px"> <br>
 	  <label for="valmistaja">Valmistaja :</label>
-	  <input type="text" name="valmistaja" value="Ei tiedossa" id="b1"> <br>
+	  <input type="text" name="valmistaja" value="Ei tiedossa" style="position: absolute" style="top:100px" style="left:300px"> <br>
 	  <label for="luokka">Raaka-aine luokka :</label>
-	  <input type="text" name="luokka" id="b1"> <br>
+	  <input type="text" name="luokka" style="position: absolute" style="top:100px" style="left:300px"> <br>
 	  <label for="selite">Selite :</label>
-	  <input type="text" name="selite" value="vapaa muotoinen" id="b1"> <br>
+	  <input type="text" name="selite" value="vapaa muotoinen" style="position: absolute" style="top:100px" style="left:300px"> <br>
       <input type="submit" value="Hae">
     </form>
 
