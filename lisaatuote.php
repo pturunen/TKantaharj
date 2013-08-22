@@ -40,5 +40,5 @@ if (isset($_POST['nimi'])) {
 } 
 ?>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
-<p><a href="haku.html">Tuotehakuun</a></p>
+<p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
