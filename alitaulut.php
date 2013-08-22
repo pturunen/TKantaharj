@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
@@ -10,7 +9,6 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_GET['nimiparametri'])) {
-    
     $kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi = ?');
     $kysely->execute(array($_GET['nimiparametri']));
 	$rivi = $kysely->fetch();
@@ -33,7 +31,6 @@ if (isset($_GET['nimiparametri'])) {
 	}
 } 
 ?>
-<p><a href="satunnainen.php">Takaisin listaukseen</a></p>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
 
