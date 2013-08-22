@@ -25,7 +25,7 @@ if (isset($_GET['nimiparametri'])) {
 			echo "<td>" . $rivi["maara"] . "</td>";
 			echo "<td>" . $rivi["mittayksikko"] . "</td>";
 			echo "</tr>";
-			$rivi = $kysely->fetch()
+			$rivi = $kysely->fetch();
 		}
 		echo "</table>";
 	}
