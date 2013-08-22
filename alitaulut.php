@@ -34,9 +34,9 @@ if (isset($_GET['nimiparametri'])) {
 	}
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
-    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$nimiparametri\">Lisaa ravintoaineelle lisätietoja</a>";
-    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote</a>";
-	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos</a>";
+    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$nimiparametri\">Lisaa ravintoaineelle lisätietoja <br></a>";
+    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
+	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos<br></a>";
 	}
 } 
 else {
