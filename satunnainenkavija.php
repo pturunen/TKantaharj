@@ -28,9 +28,6 @@ if (isset($_POST['nimi'])){
 		}
 		echo "</ul>";
 	}
-if (isset($_SESSION["kayttaja"])) {
-    echo "<a href=\"lisaatuote.html\">Lisaa uusi tuote</a>";
-}	
 }
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>

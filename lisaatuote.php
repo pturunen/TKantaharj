@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*if (!isset($_SESSION["kayttaja"])) {
+if (!isset($_SESSION["kayttaja"])) {
     header("Location: eka.html");
     die();
-}*/
+}
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
@@ -31,8 +31,14 @@ if (isset($_POST['nimi'])) {
 			$rivi = $kysely->fetch();
 		}
 		echo "</table>";
-		} 
+	//$nimiparametri = $rivi["nimi"];
+	//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?$nimiparametri\">$muuttuja</a>";
+	} 
+	else {
+	echo "Tuotteen lisääminen ei onnistunut";
+	}
 } 
 ?>
-<p>Tunnus tai salasana on väärin!</p>
-<p><a href="eka.html">Takaisin</a></p>
+<p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
+<p><a href="haku.html">Tuotehakuun</a></p>
+<p><a href="eka.html">Takaisin etusivulle</a></p>

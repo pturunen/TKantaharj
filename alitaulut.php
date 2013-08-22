@@ -31,6 +31,9 @@ if (isset($_GET['nimiparametri'])) {
 		echo "</table>";
 	}
 } 
+else {
+echo "Ravintoaineella ei lisätietoja";
+}
 ?>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
