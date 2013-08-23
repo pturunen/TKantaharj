@@ -19,7 +19,7 @@ if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
 	$genre = 'f';
 	}
     $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],DATE(CURRENT_DATE),$genre,$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
+    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],DATE(),$genre,$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
 	if ($onnistuiko) {
 		$kysely = $yhteys->prepare('SELECT id FROM rekisteri WHERE tunnus = ? and salasana = ?');
 		$kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
