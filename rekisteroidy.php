@@ -8,7 +8,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$paivays = date('Y-n-j');
+$paivays = date('Y-m-d');
 //$paivays = date("j.n.Y");
 //$aika = $yhteys->prepare('SELECT CURRENT_DATE;');
 //$aika->execute();
