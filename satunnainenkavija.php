@@ -17,17 +17,29 @@ if (isset($_POST['nimi'])){
 	die();
 	}
 	else {
-		echo "<ul style=\"color: blue\" >";
+		echo "<table border>";
+		//echo "<ul style=\"color: blue\" >";
+		echo "<tr>";
+		echo "<td>" . "  ". "RAAKA_AINE" . " " ."</td>";
+		echo "<td>" . "  ". "VALMISTAJA" . " " ."</td>";
+		echo "<td>" . "  ". "RAAKA_AINE LUOKKA" . " " ."</td>";
+		echo "<td>" . "  ". "SELITE" . " " ."</td>";
+		echo "</tr>";
 		while ($rivi ) {
-			$muuttuja = 'Nimi: ' . $rivi["nimi"] . ' Valmistaja: ' . $rivi["valmistaja"] . '  Raaka-aine luokka: ' . $rivi["luokka"] . ' Selite: ' . $rivi["selite"] . "<br>";
-			echo "<li>";
-			$nimiparametri = $rivi["nimi"];
-			//ei toimi echo "<a href=\"alitaulut.php\">$rivi["nimi"]</a>";
+			echo "<tr>";
+			$muuttuja = $rivi["nimi"] ;
+			echo "<td>" . "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$muuttuja\">$muuttuja</a>" . "</td>";
+			echo "<td>" . $rivik["valmistaja"] . "</td>";
+			echo "<td>" . $rivik["luokka"] . "</td>";
+			echo "<td>" . $rivik["selite"] . "</td>";
+			//$nimiparametri = $rivi["nimi"];
 			//linkki raakaaineen lisatietoihin
-			echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$nimiparametri\">$muuttuja</a>";
+			//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$muuttuja\">$muuttuja</a>";
+			echo "</tr>";
 			$rivi = $kysely->fetch();
 		}
-		echo "</ul>";
+		//echo "</ul>";
+		echo "</table>";
 	}
 }
 if (isset($_SESSION["kayttaja"])) {
