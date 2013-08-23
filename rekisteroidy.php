@@ -8,15 +8,15 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$paivays = date('Y-m-d');
+//$paivays = date('Y-m-d');
 //$paivays = date("j.n.Y");
-$aika = $yhteys->prepare('SELECT CURRENT_DATE AS n;');
+//$aika = $yhteys->prepare('SELECT CURRENT_DATE AS n;');
 //$aika->execute();
-$kannanpvm = $aika->fetch();
+//$kannanpvm = $aika->fetch();
 
 if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
     $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],'2013-08-23',$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
+    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],DATE(NOW()),$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
 	if ($onnistuiko) {
 		$kysely = $yhteys->prepare('SELECT id FROM rekisteri WHERE tunnus = ? and salasana = ?');
 		$kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
