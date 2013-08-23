@@ -8,7 +8,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$paivays = date("Y.M.D");
+$paivays = date("Y.m.d");
 //$paivays = date("j.n.Y");
 if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
     $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
