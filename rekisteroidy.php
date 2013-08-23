@@ -16,7 +16,7 @@ $kannanpvm = $aika->fetch();
 
 if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
     $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],$kannanpvm->n,$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
+    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],'2013-08-23',$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
 	if ($onnistuiko) {
 		$kysely = $yhteys->prepare('SELECT id FROM rekisteri WHERE tunnus = ? and salasana = ?');
 		$kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
