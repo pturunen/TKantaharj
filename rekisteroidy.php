@@ -8,11 +8,11 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$paivays = date("Y.m.d");
+$paivays = date("YY.MM.DD");
 //$paivays = date("j.n.Y");
 if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
-    $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,CURDATE(),?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
+    $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
+    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],$paivays,$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
 	if ($onnistuiko) {
 		$kysely = $yhteys->prepare('SELECT id FROM rekisteri WHERE tunnus = ? and salasana = ?');
 		$kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
