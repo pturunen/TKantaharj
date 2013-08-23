@@ -20,6 +20,15 @@ if (isset($_GET['nimiparametri'])) {
 	}
 	else {
 		echo "<table border>";
+		echo "<tr>";
+		echo "<td>" . "  ". "PERUSRAVINTOAINEET" . " " ."</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>" . "  ". "RAVINTOTEKIJÄ" . " " ."</td>";
+		echo "<td>" . "  ". "NIMI" . " " ."</td>";
+		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
+		echo "<td>" . "  ". "MITTAYKSIKKÖ" . " " ."</td>";
+		echo "</tr>";
 		while ($rivi) {
 			echo "<tr>";
 			echo "<td>" . $rivi["nimi"] . "</td>";
