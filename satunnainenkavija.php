@@ -29,9 +29,9 @@ if (isset($_POST['nimi'])){
 			echo "<tr>";
 			$muuttuja = $rivi["nimi"] ;
 			echo "<td>" . "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$muuttuja\">$muuttuja</a>" . "</td>";
-			echo "<td>" . $rivik["valmistaja"] . "</td>";
-			echo "<td>" . $rivik["luokka"] . "</td>";
-			echo "<td>" . $rivik["selite"] . "</td>";
+			echo "<td>" . $rivi["valmistaja"] . "</td>";
+			echo "<td>" . $rivi["luokka"] . "</td>";
+			echo "<td>" . $rivi["selite"] . "</td>";
 			//$nimiparametri = $rivi["nimi"];
 			//linkki raakaaineen lisatietoihin
 			//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$muuttuja\">$muuttuja</a>";
