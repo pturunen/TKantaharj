@@ -10,9 +10,12 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $paivays = date("YY.MM.DD");
 //$paivays = date("j.n.Y");
+$aika = $yhteys->prepare('SELECT CURRENT_DATE;');
+$aika->execute();
+$kannanpvm = $aika->fetch();
 if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
-    $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,(SELECT CURRENT_DATE),?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
+    $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
+    $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],$kannanpvm,$_POST["sukupuoli"],$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
 	if ($onnistuiko) {
 		$kysely = $yhteys->prepare('SELECT id FROM rekisteri WHERE tunnus = ? and salasana = ?');
 		$kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
