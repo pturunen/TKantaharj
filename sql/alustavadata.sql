@@ -1,5 +1,5 @@
 INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika)
-values ('pallero','opensource',DATE(NOW()),'female','180','30','80');
+values ('pallero','open',DATE(NOW()),'female','180','30','80');
 
 INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
 values ('rasvaton maito','teollisuus','maidot','rasvaa alle 2%');
