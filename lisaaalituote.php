@@ -21,6 +21,15 @@ if (isset($_POST['nimip'])) {
 		$tulos = $kysely->execute(array($_POST['nimip']));
 		$rivip = $kysely->fetch();
 		echo "<table border>";
+		echo "<tr>";
+		echo "<td>" . "  ". "PERUSRAVINTOAINEET" . " " ."</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>" . "  ". "RAVINTOTEKIJÄ" . " " ."</td>";
+		echo "<td>" . "  ". "NIMI" . " " ."</td>";
+		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
+		echo "<td>" . "  ". "MITTAYKSIKKÖ" . " " ."</td>";
+		echo "</tr>";
 		while ($rivip) {
 			echo "<tr>";
 			echo "<td>" . $rivip["ravintotekija"] . "</td>";
@@ -41,6 +50,15 @@ if (isset($_POST['nimip'])) {
 		$tulos = $kyselyk->execute(array($_POST['nimik']));
 		$rivik = $kyselyk->fetch();
 		echo "<table border>";
+		echo "<tr>";
+		echo "<td>" . "  ". "KIVENNÄIS-JA HIVENAINEET" . " " ."</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>" . "  ". "RAVINTOTEKIJÄ" . " " ."</td>";
+		echo "<td>" . "  ". "NIMI" . " " ."</td>";
+		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
+		echo "<td>" . "  ". "MITTAYKSIKKÖ" . " " ."</td>";
+		echo "</tr>";
 		while ($rivik) {
 			echo "<tr>";
 			echo "<td>" . $rivik["ravintotekija"] . "</td>";
