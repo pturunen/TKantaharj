@@ -3,7 +3,7 @@ CREATE TABLE rekisteri (
   id serial PRIMARY KEY,
   tunnus varchar(10) NOT NULL UNIQUE,
   salasana varchar(18) NOT NULL,
-  luontipvm date,
+  luontipvm date NOT NULL DEFAULT current_date,
   sukupuoli varchar(1),
   pituus real,
   paino real,
@@ -13,7 +13,7 @@ CREATE TABLE rekisteri (
 -- paivakirjan taulun luonti
 CREATE TABLE tapahtumapaiva (
   id serial PRIMARY KEY,
-  paiva date NOT NULL,
+  paiva date NOT NULL DEFAULT current_date,
   tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paino real,
   selite varchar(50)
