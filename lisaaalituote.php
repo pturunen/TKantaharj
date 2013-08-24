@@ -44,8 +44,13 @@ if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
 	//	} 
 
  if (isset($_POST['nimik']) && isset($_POST['ravintotekijak']) ) {
+    try{
     $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
+	}
+	catch (PDOException $e) {
+     echo "VIRHE: " . $e->getMessage();
+    }
 	}
 	//if ($onnistuikok) {
 	try{
