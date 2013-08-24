@@ -29,9 +29,10 @@ if (!isset($_SESSION["kayttaja"])) {
     <form action="haetapahtumia.php" method="POST">
       <fieldset>
         <legend>Päiväkirja tapahtumien haku</legend>
-		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="all" checked> kaikki tapahtumat <br>
-		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="val" > tietty ajanjakso  2013-08-24 - 2013-09-24 <br>
-		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="one" > tietty päivä      2013-08-24 -             <br>
+		<input type="radio" name="aika" value="all" checked> kaikki tapahtumat <br>
+		<input type="radio" name="aika" value="val" > tietty ajanjakso  2013-08-24 - 2013-09-24 <br>
+		<input type="radio" name="aika" value="one" > tietty päivä      2013-08-24 -             <br>
+		<?php $_SESSION['aikajana'] = aika; ?>
 		<br>
 		Päivamäärä:
 		<input type="text" name="paivastart" value="2013-08-24"/> - <input type="text" name="paivaend" value="2013-08-24"/>
