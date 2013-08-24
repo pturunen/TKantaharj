@@ -33,6 +33,7 @@ if (isset($_POST['nimi'])) {
 		echo "</table>";
     $muuttuja = 'Lisätietoja ravintoaineelle: ' . $rivi["nimi"] . "<br>";
 	$nimiparametri = $rivi["nimi"];
+	$_SESSION["tuotenimi"] = $rivi["nimi"];
 	} 
 	else {
 	echo "Tuotteen lisääminen ei onnistunut";
