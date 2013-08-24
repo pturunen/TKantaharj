@@ -72,7 +72,6 @@ if (isset($_POST['nimip'])) {
 		} 
 }
 ?>
-//<p><a href="lisaaalituote.html">Lisaa uusia lisätietoja</a></p>
 <p><a href="lisaaravintoaineita.php">Lisaa ravintoaineita</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.php">Tuotehakuun</a></p>
