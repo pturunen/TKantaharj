@@ -13,7 +13,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-if (isset($_POST['nimip'])) {
+if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
     $kysely = $yhteys->prepare('INSERT INTO perusravintoaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikop = $kysely->execute(array($_POST["ravintotekijap"], $_POST["nimip"],$_POST["maarap"],$_POST["mittayksikkop"]));
 	if ($onnistuikop) {
@@ -42,7 +42,7 @@ if (isset($_POST['nimip'])) {
 		echo "</table>";
 		} 
 }
- if (isset($_POST['nimik'])) {
+ if (isset($_POST['nimik']) && isset($_POST['ravintotekijak']) ) {
     $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	if ($onnistuikok) {
@@ -72,7 +72,7 @@ if (isset($_POST['nimip'])) {
 		} 
 }
 ?>
-<p><a href="lisaaravintoaineita.php">Lisaa ravintoaineita</a></p>
+<p><a href="lisaaalituote2.php">Lisaa ravintoaineita</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>

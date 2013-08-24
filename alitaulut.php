@@ -17,8 +17,6 @@ if (isset($_GET['nimiparametri'])) {
     $kysely2->execute(array($_GET['nimiparametri']));
 	$rivi2 = $kysely2->fetch();
 	if (empty($rivi)){
-	//header("Location: satunnainenvirheilmoitus.html");
-	//die();
 	echo "Ravintoaineella ei lisätietoja perusravintoaineista <br>";
 	}
 	else {
@@ -45,8 +43,6 @@ if (isset($_GET['nimiparametri'])) {
 	
 	}
 	if (empty($rivi2)){
-	//header("Location: satunnainenvirheilmoitus.html");
-	//die();
 	echo "Ravintoaineella ei lisätietoja kivennäis ja hivenaineista <br>";
 	}
 	else {
@@ -74,7 +70,7 @@ if (isset($_GET['nimiparametri'])) {
 	}
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
-    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote.html?nimiparametri=$nimiparametri\">Lisaa ravintoaineelle lisätietoja <br></a>";
+    echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote2.php\">Lisaa ravintoaineelle lisätietoja <br></a>";
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos<br></a>";
 	}
