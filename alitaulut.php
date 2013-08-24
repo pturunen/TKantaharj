@@ -9,13 +9,24 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-if (isset($_GET['nimiparametri'])) {
+if (isset($_GET['nimiparametri']) || isset($_SESSION['hakualikey'])){
+	if (isset($_GET['nimiparametri'])){
+		$_SESSION['hakualikey'] = $_GET['nimiparametri'];
+	}
+	else {
+		$_GET['nimiparametri'] = $_SESSION['hakualikey'];
+	}
+try {
     $kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi = ?');
     $kysely->execute(array($_GET['nimiparametri']));
 	$rivi = $kysely->fetch();
 	$kysely2 = $yhteys->prepare('SELECT * FROM kivhivenaineet WHERE nimi = ?');
     $kysely2->execute(array($_GET['nimiparametri']));
 	$rivi2 = $kysely2->fetch();
+}
+catch (PDOException $e) {
+    //echo "VIRHE: " . $e->getMessage());
+}
 	if (empty($rivi)){
 	echo "Ravintoaineella ei lisätietoja perusravintoaineista <br>";
 	}
