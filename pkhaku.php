@@ -14,7 +14,7 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['aika']) && $_POST['aika'] == 'all')){
+if (isset($_POST['aika']) && $_POST['aika'] == 'all'){
 $haekaikki = true;
 	if (isset($_POST['aika']) && $_POST['aika'] == 'val'){
 		$haevali = true;
