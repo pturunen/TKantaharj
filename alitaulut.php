@@ -13,10 +13,13 @@ if (isset($_GET['nimiparametri'])) {
     $kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi = ?');
     $kysely->execute(array($_GET['nimiparametri']));
 	$rivi = $kysely->fetch();
+	$kysely2 = $yhteys->prepare('SELECT * FROM kivhivenaineet WHERE nimi = ?');
+    $kysely2->execute(array($_GET['nimiparametri']));
+	$rivi2 = $kysely2->fetch();
 	if (empty($rivi)){
 	//header("Location: satunnainenvirheilmoitus.html");
 	//die();
-	echo "Ravintoaineella ei lisätietoja";
+	echo "Ravintoaineella ei lisätietoja perusravintoaineista <br>";
 	}
 	else {
 		echo "<table border>";
@@ -37,6 +40,34 @@ if (isset($_GET['nimiparametri'])) {
 			echo "<td>" . $rivi["mittayksikko"] . "</td>";
 			echo "</tr>";
 			$rivi = $kysely->fetch();
+		}
+		echo "</table>";
+	
+	}
+	if (empty($rivi2)){
+	//header("Location: satunnainenvirheilmoitus.html");
+	//die();
+	echo "Ravintoaineella ei lisätietoja kivennäis ja hivenaineista <br>";
+	}
+	else {
+		echo "<table border>";
+		echo "<tr>";
+		echo "<td>" . "  ". "KIVENNÄIS-JA HIVENAINEET" . " " ."</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>" . "  ". "RAVINTOTEKIJÄ" . " " ."</td>";
+		echo "<td>" . "  ". "NIMI" . " " ."</td>";
+		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
+		echo "<td>" . "  ". "MITTAYKSIKKÖ" . " " ."</td>";
+		echo "</tr>";
+		while ($rivi2) {
+			echo "<tr>";
+			echo "<td>" . $rivi2["nimi"] . "</td>";
+			echo "<td>" . $rivi2["ravintotekija"] . "</td>";
+			echo "<td>" . $rivi2["maara"] . "</td>";
+			echo "<td>" . $rivi2["mittayksikko"] . "</td>";
+			echo "</tr>";
+			$rivi2 = $kysely2->fetch();
 		}
 		echo "</table>";
 	
