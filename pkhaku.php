@@ -30,7 +30,7 @@ try {
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
-    echo "VIRHE: " . $e->getMessage());
+    echo "VIRHE: " . $e->getMessage();
 }
 	if (empty($rivi)){
 	echo "Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona! <br>";
