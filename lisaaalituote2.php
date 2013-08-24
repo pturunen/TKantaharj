@@ -29,6 +29,8 @@ if (!isset($_SESSION["kayttaja"])) {
 	  <label for="ravintotekijap">Ravintotekijä:</label>
       <input type="text" name="ravintotekijap"> <br>
 	  <label for="nimip">Raakaineen nimi :</label>
+	  <p>Tervetuloa, <?php echo $_SESSION["kayttaja"]; ?>!</p>
+	  <p>Tuotenimi, <?php echo $_SESSION["tuotenimi"]; ?>!</p>
 	  <input type="text" name="nimip" value= <?php echo $_SESSION['tuotenimi']; ?> > <br>
 	  <label for="maarap">Määrä :</label>
 	  <input type="text" name="maarap"> <br>
