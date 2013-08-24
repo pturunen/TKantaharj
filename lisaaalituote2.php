@@ -31,7 +31,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	  <label for="nimip">Raakaineen nimi :</label>
 	  <input type="text" name="nimip" value= <?php echo $_SESSION['tuotenimi']; ?> > <br>
 	  <label for="maarap">Määrä :</label>
-	  <input type="text" name="maarap"> <br>
+	  <input type="real" name="maarap"> <br>
 	  <label for="mittayksikkop">Mittayksikkö :</label>
 	  <input type="text" name="mittayksikkop"> <br>
 	  <h2> Kivennäis ja hivenaineet </h2>
@@ -40,7 +40,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	  <label for="nimik">Raakaineen nimi :</label>
 	  <input type="text" name="nimik" value= <?php echo $_SESSION['tuotenimi']; ?> > <br>
 	  <label for="maarak">Määrä :</label>
-	  <input type="text" name="maarak"> <br>
+	  <input type="real" name="maarak"> <br>
 	  <label for="mittayksikkok">Mittayksikkö :</label>
 	  <input type="text" name="mittayksikkok"> <br>
 	  
