@@ -27,7 +27,7 @@ try {
 	WHERE tunnus = ? && tunnus == tapahtumapaiva.tunnus && tapahtumapaiva.id == energiansaanti.tapid && 
 	energiansaanti.ruoka == perusravintoaineet.nimi');
 	*/
-	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id AS tpaiva,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
+	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara
 	FROM tapahtumapaiva,energiansaanti
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid ');
@@ -55,7 +55,7 @@ catch (PDOException $e) {
 		echo "</tr>";
 		while ($rivi) {
 			echo "<tr>";
-			echo "<td>" . $rivi["tpaiva"] . "</td>";//tapahtumapaiva paiva where tunnus == $_SESSION['kayttaja'] and paiva == paivastart -paivaend
+			echo "<td>" . $rivi["paiva"] . "</td>";//tapahtumapaiva paiva where tunnus == $_SESSION['kayttaja'] and paiva == paivastart -paivaend
 			echo "<td>" . $rivi["paino"] . "</td>";//tapahtumapaiva selite where tunnus == $_SESSION['kayttaja']
 			echo "<td>" . $rivi["seli"] . "</td>"; //tapahtumapaiva selite where tunnus == $_SESSION['kayttaja']
 			echo "<td>" . $rivi["ruoka"] . "</td>";//energiansaanti ruoka where tapid == tapahtumapaiva.id
