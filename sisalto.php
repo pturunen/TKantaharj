@@ -23,6 +23,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
   <body>
+	<img src="mustaherukka.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
 	<p>Tervetuloa, <?php echo $_SESSION["kayttaja"]; ?>!</p>
 	<p><a href="haku.php">Siirry tuotehakuun</a></p>
 	<p><a href="lisaatuote.html">Lisaa uusi raaka-aine</a></p>
