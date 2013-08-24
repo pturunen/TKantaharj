@@ -40,7 +40,7 @@ if (isset($_POST['nimi'])) {
 	}
 } 
 ?>
-<p><a href="lisaaalituote.html?nimiparametri=<?php $nimiparametri ?>">Lisaa ravintoaineelle lisätietoja</a></p>
+<p><a href="lisaaravintoaineita?nimiparametri=<?php $nimiparametri ?>">Lisaa ravintoaineelle lisätietoja</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
 <p><a href="haku.php">Tuotehakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
