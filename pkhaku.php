@@ -21,11 +21,16 @@ $haekaikki = true;
 	}
 }	
 try {
-    $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva,tapahtumapaiva.paino,tapahtumapaiva.selite,
+   /* $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva,tapahtumapaiva.paino,tapahtumapaiva.selite,
 	energiansaanti.ruoka, energiansaanti.maara, perusravintoaineet.maara
 	FROM tapahtumapaiva,raakaaine,energiansaanti,perusravintoaineet 
 	WHERE tunnus = ? && tunnus == tapahtumapaiva.tunnus && tapahtumapaiva.id == energiansaanti.tapid && 
 	energiansaanti.ruoka == perusravintoaineet.nimi');
+	*/
+	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva,tapahtumapaiva.paino,tapahtumapaiva.selite,
+	energiansaanti.ruoka, energiansaanti.maara
+	FROM tapahtumapaiva,energiansaanti
+	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid ');
     $kysely->execute(array($_SESSION['kayttaja']));
 	$rivi = $kysely->fetch();
 }
