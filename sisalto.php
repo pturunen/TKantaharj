@@ -5,10 +5,12 @@ if (!isset($_SESSION["kayttaja"])) {
     die();
 }
 ?>
-<head>
+<!DOCTYPE html>
+<html>
+  <head>
     <style type="text/css">
 	body {background-color:#d0e4fe;}
-	h1 {
+	title {
 	color:orange;
 	text-align:center;
 	}
@@ -17,10 +19,16 @@ if (!isset($_SESSION["kayttaja"])) {
 	}
 	fieldset { font-size:12px }
 	</style>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Tervetuloa, <?php echo $_SESSION["kayttaja"]; ?>!</title>
+    <title>LightenYourLife</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
+  <body>
+	<p>Tervetuloa, <?php echo $_SESSION["kayttaja"]; ?>!</p>
+	<p><a href="haku.php">Siirry tuotehakuun</a></p>
+	<p><a href="lisaatuote.html">Lisaa uusi raaka-aine</a></p>
+	<p><a href="ulos.php">Kirjaudu ulos</a></p>
+  </body>
+  </head>
+  </html>
 
-<p><a href="haku.php">Siirry tuotehakuun</a></p>
-<p><a href="lisaatuote.html">Lisaa uusi raaka-aine</a></p>
-<p><a href="ulos.php">Kirjaudu ulos</a></p>
+
