@@ -52,6 +52,7 @@ catch (PDOException $e) {
 		echo "<td>" . "  ". "SELITE" . " " ."</td>";
 		echo "<td>" . "  ". "RUOKA-AINE" . " " ."</td>";
 		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
+		echo "<td>" . "  ". "PERUSRAVINTOAINE" . " " ."</td>";
 		echo "<td>" . "  ". "ENERGIA KJ/100g" . " " ."</td>";
 		echo "</tr>";
 		while ($rivi) {
