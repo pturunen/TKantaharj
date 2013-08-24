@@ -55,6 +55,7 @@ catch (PDOException $e) {
 		echo "<td>" . "  ". "ENERGIA KJ/100g" . " " ."</td>";
 		echo "</tr>";
 		while ($rivi) {
+		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];
 			echo "<tr>";
 			echo "<td>" . $rivi["paiva"] . "</td>";//tapahtumapaiva paiva where tunnus == $_SESSION['kayttaja'] and paiva == paivastart -paivaend
 			echo "<td>" . $rivi["paino"] . "</td>";//tapahtumapaiva selite where tunnus == $_SESSION['kayttaja']
@@ -62,7 +63,6 @@ catch (PDOException $e) {
 			echo "<td>" . $rivi["ruoka"] . "</td>";//energiansaanti ruoka where tapid == tapahtumapaiva.id
 			echo "<td>" . $rivi["emaara"] . "</td>"; //energiansaanti maara where tapid == tapahtumapaiva.id
 			echo "<td>" . $rivi["energia"] . "</td>"; //perusravintoaineet ravintotekija where ravintotekija== energia and nimi == energiansaanti.ruoka
-			$saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];
 			echo "<td>" . $saatuenergia . "</td>";//perusravintoaineet maara where ravintotekija == energia and nimi == energiansaanti.ruoka
 			echo "</tr>";
 			$rivi = $kysely->fetch();
