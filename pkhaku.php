@@ -28,10 +28,11 @@ try {
 	energiansaanti.ruoka == perusravintoaineet.nimi');
 	*/
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
-	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara
-	FROM tapahtumapaiva,energiansaanti
-	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid ');
-    $kysely->execute(array($_SESSION['kayttaja']));
+	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
+	FROM tapahtumapaiva,energiansaanti, perusravintoaine
+	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
+	perusravintoaineet.ravintotekija = ?');
+    $kysely->execute(array($_SESSION['kayttaja'],'energia' ));
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
@@ -60,8 +61,9 @@ catch (PDOException $e) {
 			echo "<td>" . $rivi["seli"] . "</td>"; //tapahtumapaiva selite where tunnus == $_SESSION['kayttaja']
 			echo "<td>" . $rivi["ruoka"] . "</td>";//energiansaanti ruoka where tapid == tapahtumapaiva.id
 			echo "<td>" . $rivi["emaara"] . "</td>"; //energiansaanti maara where tapid == tapahtumapaiva.id
-			//echo "<td>" . $rivi["perusravintoaineet.ravintotekija"] . "</td>"; //perusravintoaineet ravintotekija where ravintotekija== energia and nimi == energiansaanti.ruoka
-			//echo "<td>" . $rivi["perusravintoaineet.maara"] . "</td>";//perusravintoaineet maara where ravintotekija == energia and nimi == energiansaanti.ruoka
+			echo "<td>" . $rivi["energia"] . "</td>"; //perusravintoaineet ravintotekija where ravintotekija== energia and nimi == energiansaanti.ruoka
+			$saatuenergia = ($rivi["pmaara"]\100)*$rivi["emaara"];
+			echo "<td>" . $rivi["$saatuenergia"] . "</td>";//perusravintoaineet maara where ravintotekija == energia and nimi == energiansaanti.ruoka
 			echo "</tr>";
 			$rivi = $kysely->fetch();
 		}
