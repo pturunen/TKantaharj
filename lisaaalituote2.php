@@ -29,8 +29,6 @@ if (!isset($_SESSION["kayttaja"])) {
 	  <label for="ravintotekijap">Ravintotekijä:</label>
       <input type="text" name="ravintotekijap"> <br>
 	  <label for="nimip">Raakaineen nimi :</label>
-	  <p>Tervetuloa, <?php echo $_SESSION["kayttaja"]; ?>!</p>
-	  <p>Tuotenimi, <?php echo $_SESSION["tuotenimi"]; ?>!</p>
 	  <input type="text" name="nimip" value= <?php echo $_SESSION['tuotenimi']; ?> > <br>
 	  <label for="maarap">Määrä :</label>
 	  <input type="text" name="maarap"> <br>
@@ -40,7 +38,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	  <label for="ravintotekijak">Ravintotekijä:</label>
       <input type="text" name="ravintotekijak"> <br>
 	  <label for="nimik">Raakaineen nimi :</label>
-	  <input type="text" name="nimik"> <br>
+	  <input type="text" name="nimik" value= <?php echo $_SESSION['tuotenimi']; ?> > <br>
 	  <label for="maarak">Määrä :</label>
 	  <input type="text" name="maarak"> <br>
 	  <label for="mittayksikkok">Mittayksikkö :</label>
