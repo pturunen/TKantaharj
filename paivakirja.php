@@ -26,7 +26,7 @@ if (!isset($_SESSION["kayttaja"])) {
     <img src="paivakirja.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
 	<h1> Päiväkirja valikko</h1>
 	<p></p>
-    <form action="haetapahtumia.php" method="POST">
+    <form action="pkhaku.php" method="POST">
       <fieldset>
         <legend>Päiväkirja tapahtumien haku</legend>
 		<input type="radio" name="aika" value="all" checked> kaikki tapahtumat <br>
