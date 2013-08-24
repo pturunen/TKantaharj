@@ -8,17 +8,27 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-if (isset($_POST['nimi'])){
+if (isset($_POST['nimi']) || isset($_SESSION['hakukey']){
+if (!isset($_POST['nimi']){
+$_SESSION['hakukey'] = $_POST['nimi'];
+}
+else {
+$_POST['nimi'] = $_SESSION['hakukey'];
+}
+try {
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $tulos = $kysely->execute(array("%". $_POST['nimi'] . "%"));
 	$rivi = $kysely->fetch();
+	}
+catch (PDOException $e) {
+    //echo "VIRHE: " . $e->getMessage());
+}
 	if (empty($rivi)){
 	header("Location: satunnainenvirheilmoitus.html");
 	die();
 	}
 	else {
 		echo "<table border>";
-		//echo "<ul style=\"color: blue\" >";
 		echo "<tr>";
 		echo "<td>" . "  ". "RAAKA_AINE" . " " ."</td>";
 		echo "<td>" . "  ". "VALMISTAJA" . " " ."</td>";
@@ -32,9 +42,6 @@ if (isset($_POST['nimi'])){
 			echo "<td>" . $rivi["valmistaja"] . "</td>";
 			echo "<td>" . $rivi["luokka"] . "</td>";
 			echo "<td>" . $rivi["selite"] . "</td>";
-			//$nimiparametri = $rivi["nimi"];
-			//linkki raakaaineen lisatietoihin
-			//echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$muuttuja\">$muuttuja</a>";
 			echo "</tr>";
 			$rivi = $kysely->fetch();
 		}
