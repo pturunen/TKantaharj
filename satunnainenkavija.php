@@ -23,7 +23,6 @@ try {
 catch (PDOException $e) {
     //echo "VIRHE: " . $e->getMessage());
 	}
-}
 	if (empty($rivi)){
 	header("Location: satunnainenvirheilmoitus.html");
 	die();
