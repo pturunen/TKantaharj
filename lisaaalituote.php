@@ -17,7 +17,7 @@ if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
     $kysely = $yhteys->prepare('INSERT INTO perusravintoaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikop = $kysely->execute(array($_POST["ravintotekijap"], $_POST["nimip"],$_POST["maarap"],$_POST["mittayksikkop"]));
 	}
-	if ($onnistuikop) {
+	//if ($onnistuikop) {
 		$kysely = $yhteys->prepare('SELECT * FROM perusravintoaineet WHERE nimi =  ?');
 		$tulos = $kysely->execute(array($_POST['nimip']));
 		$rivip = $kysely->fetch();
@@ -41,13 +41,13 @@ if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
 			$rivip = $kysely->fetch();
 		}
 		echo "</table>";
-		} 
+	//	} 
 
  if (isset($_POST['nimik']) && isset($_POST['ravintotekijak']) ) {
     $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	}
-	if ($onnistuikok) {
+	//if ($onnistuikok) {
 		$kyselyk = $yhteys->prepare('SELECT * FROM kivhivenaineet WHERE nimi =  ?');
 		$tulos = $kyselyk->execute(array($_POST['nimik']));
 		$rivik = $kyselyk->fetch();
@@ -71,7 +71,7 @@ if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
 			$rivik = $kyselyk->fetch();
 		}
 		echo "</table>";
-		} 
+	//	} 
 ?>
 <p><a href="lisaaalituote2.php">Lisaa ravintoaineita</a></p>
 <p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
