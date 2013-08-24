@@ -1,6 +1,15 @@
 INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika)
 values ('pallero','opensource',DATE(NOW()),'f',180,30,80);
 
+INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite)
+values (DATE(NOW()),'pallero',45,'uusi elämä');
+
+INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
+values ('grillikylki','teollisuus','lihavalmisteet','luomu');
+
+INSERT INTO perusravintoaineet (ravintotekija,nimi,mittayksikko,maara)
+values ('energia','grillikylki','kj/100 g','3000');
+
 INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
 values ('rasvaton maito','teollisuus','maidot','rasvaa alle 2%');
 
