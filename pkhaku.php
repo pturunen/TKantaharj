@@ -60,8 +60,8 @@ catch (PDOException $e) {
 			echo "<td>" . $rivi["tapahtumapaiva.selite"] . "</td>"; //tapahtumapaiva selite where tunnus == $_SESSION['kayttaja']
 			echo "<td>" . $rivi["energiansaanti.ruoka"] . "</td>";//energiansaanti ruoka where tapid == tapahtumapaiva.id
 			echo "<td>" . $rivi["energiansaanti.maara"] . "</td>"; //energiansaanti maara where tapid == tapahtumapaiva.id
-			echo "<td>" . $rivi["perusravintoaineet.ravintotekija"] . "</td>"; //perusravintoaineet ravintotekija where ravintotekija== energia and nimi == energiansaanti.ruoka
-			echo "<td>" . $rivi["perusravintoaineet.maara"] . "</td>";//perusravintoaineet maara where ravintotekija == energia and nimi == energiansaanti.ruoka
+			//echo "<td>" . $rivi["perusravintoaineet.ravintotekija"] . "</td>"; //perusravintoaineet ravintotekija where ravintotekija== energia and nimi == energiansaanti.ruoka
+			//echo "<td>" . $rivi["perusravintoaineet.maara"] . "</td>";//perusravintoaineet maara where ravintotekija == energia and nimi == energiansaanti.ruoka
 			echo "</tr>";
 			$rivi = $kysely->fetch();
 		}
