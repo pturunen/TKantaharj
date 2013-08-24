@@ -9,12 +9,12 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['nimi']) || isset($_SESSION['hakukey']){
-if (!isset($_POST['nimi']){
-$_SESSION['hakukey'] = $_POST['nimi'];
-}
-else {
-$_POST['nimi'] = $_SESSION['hakukey'];
-}
+	if (!isset($_POST['nimi']){
+		$_SESSION['hakukey'] = $_POST['nimi'];
+	}
+	else {
+		$_POST['nimi'] = $_SESSION['hakukey'];
+	}
 try {
     $kysely = $yhteys->prepare('SELECT * FROM raakaaine WHERE nimi LIKE  ?');
     $tulos = $kysely->execute(array("%". $_POST['nimi'] . "%"));
@@ -22,6 +22,7 @@ try {
 	}
 catch (PDOException $e) {
     //echo "VIRHE: " . $e->getMessage());
+	}
 }
 	if (empty($rivi)){
 	header("Location: satunnainenvirheilmoitus.html");
