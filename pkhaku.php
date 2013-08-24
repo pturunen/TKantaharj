@@ -53,7 +53,7 @@ catch (PDOException $e) {
 		echo "<td>" . "  ". "RUOKA-AINE" . " " ."</td>";
 		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
 		echo "<td>" . "  ". "PERUSRAVINTOAINE" . " " ."</td>";
-		echo "<td>" . "  ". "ENERGIA KJ/100g" . " " ."</td>";
+		echo "<td>" . "  ". "ENERGIAN SAANTI KJ" . " " ."</td>";
 		echo "</tr>";
 		while ($rivi) {
 		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];
