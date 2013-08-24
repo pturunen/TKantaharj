@@ -9,7 +9,7 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['nimi']) || isset($_SESSION['hakukey'])){
-	if (!isset($_POST['nimi']){
+	if (!isset($_POST['nimi'])){
 		$_SESSION['hakukey'] = $_POST['nimi'];
 	}
 	else {
