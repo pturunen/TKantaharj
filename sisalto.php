@@ -25,6 +25,7 @@ if (!isset($_SESSION["kayttaja"])) {
   <body>
 	<img src="mustaherukka.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
 	<p>Tervetuloa, <?php echo $_SESSION["kayttaja"]; ?>!</p>
+	<p><a href="paivakirja.php">Siirry päiväkirjaan</a></p>
 	<p><a href="haku.php">Siirry tuotehakuun</a></p>
 	<p><a href="lisaatuote.html">Lisaa uusi raaka-aine</a></p>
 	<p><a href="ulos.php">Kirjaudu ulos</a></p>
