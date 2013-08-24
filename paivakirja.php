@@ -24,16 +24,16 @@ if (!isset($_SESSION["kayttaja"])) {
   </head>
   <body>
     <img src="paivakirja.jpg" title="LightenYourLife" width="320" height="220" alt="LightenYourLife" />
-	<h1> P‰iv‰kirja valikko</h1>
+	<h1> P√§iv√§kirja valikko</h1>
 	<p></p>
     <form action="haetapahtumia.php" method="POST">
       <fieldset>
-        <legend>P‰iv‰kirja tapahtumien haku</legend>
+        <legend>P√§iv√§kirja tapahtumien haku</legend>
 		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="all" checked> kaikki tapahtumat <br>
 		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="val" > tietty ajanjakso  2013-08-24 - 2013-09-24 <br>
-		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="one" > tietty p‰iv‰      2013-08-24 -             <br>
+		<input type="radio" name=<?php $_SESSION['aikajana'] ?> value="one" > tietty p√§iv√§      2013-08-24 -             <br>
 		<br>
-		Paivam‰‰r‰:
+		P√§ivam√§√§r√§:
 		<input type="text" name="paivastart" value="2013-08-24"/> - <input type="text" name="paivaend" value="2013-08-24"/>
 		<br>
         <input type="submit" value="Hae tapahtumia" />
