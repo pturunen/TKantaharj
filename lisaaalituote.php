@@ -48,9 +48,14 @@ if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	}
 	//if ($onnistuikok) {
+	try{
 		$kyselyk = $yhteys->prepare('SELECT * FROM kivhivenaineet WHERE nimi =  ?');
 		$tulos = $kyselyk->execute(array($_POST['nimik']));
 		$rivik = $kyselyk->fetch();
+		}
+	catch(PDOException $e) {
+     echo "VIRHE: " . $e->getMessage();
+    }
 		echo "<table border>";
 		echo "<tr>";
 		echo "<td>" . "  ". "KIVENNÄIS-JA HIVENAINEET" . " " ."</td>";
