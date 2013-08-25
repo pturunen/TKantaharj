@@ -28,6 +28,19 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	 catch (PDOException $e) {
    // die("VIRHE: " . $e->getMessage());
 }
+//lisayksen tarkistaminen 
+if (isset($_POST['ruoka'])){
+	try {
+	$kysely2 = $yhteys->prepare('SELECT ruoka from raakaaine where nimi = ?');
+    $kysely2->execute(array($_POST['ruoka'] ));
+	$rivi2 = $kysely2->fetch();
+	}
+	catch (PDOException $e) {
+	 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
+	}	
+}
+else {
+echo "<script>alert('Et antanut ruoka-ainetta!');</script>";
 }
 ?>
 <!DOCTYPE html>
