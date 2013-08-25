@@ -80,7 +80,7 @@ catch (PDOException $e) {
         <legend>Päiväkirja tapahtumat</legend>
 		<table border>
 		<tr>
-		<td>PÄIVÄKIRJA TAPAHTUMAT</td>
+		<td>MUOKATTAVA TAPAHTUMA</td>
 		</tr>
 		<tr>
 		<td>PÄIVÄMÄÄRÄ</td>
@@ -90,26 +90,22 @@ catch (PDOException $e) {
 		<td>MÄÄRÄ</td>
 		<td>PERUSRAVINTOAINE</td>
 		<td>ENERGIAN SAANTI KJ</td>
-		<td>Valitse poistettavat</td>
-		<td>Valitse muokattava</td>
 		</tr>
 		<?php while (  $rivi  ) {
-		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] ?>
 			<tr>
 			<td><?php echo $rivi["paiva"]?></td>
-			<td><?php echo $rivi["paino"]?> </td>
-			<td><?php echo $rivi["seli"]?></td>
-			<td><?php echo $rivi["ruoka"]?></td>
-			<td><?php echo $rivi["emaara"]?></td> 
+			<td> <input type="text" name="paino" value=<?php echo $rivi["paino"]?> > </td>
+			<td> <input type="text" name="selite" value=<?php echo $rivi["seli"]?> > </td>
+			<td> <input type="text" name="ruoka" value=<?php echo $rivi["ruoka"]?> > </td>
+			<td> <input type="text" name="maara" value=<?php echo $rivi["emaara"]?> > </td> 
 			<td>energia</td>
+			$saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] ?>
 			<td><?php echo $saatuenergia?></td>
-			<td> <input type="checkbox" name="listapois[]" value= <?php $rivi["eid"] ?> > </td>
-			<td> <input type="checkbox" name="listamuokkaa[]" value= <?php $rivi["eid"] ?> > </td>
 			</tr>
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
 		</table>
-		<input type="submit" value="Submit" />
+		<input type="submit" value="Muuta" />
 		<br>
       </fieldset>
 	  </form>
