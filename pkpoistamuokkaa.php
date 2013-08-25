@@ -36,6 +36,7 @@ catch (PDOException $e) {
 }
 foreach($listamuokattava as $mrivi){
 }
+if ("{$mrivi}"){
 //hae kyselyllä muutettava rivi, korjaa ruksi valintaa siten etta vain yksi ruksi muokattavaksi kerrallaan
 try {
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
@@ -118,7 +119,7 @@ catch (PDOException $e) {
   </html>		
 <?php
 	}
-	
+}	
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
     //echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote2.php\">Lisaa ravintoaineelle lisätietoja <br></a>";
