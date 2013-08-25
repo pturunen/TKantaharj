@@ -59,7 +59,6 @@ if($rivi2) {
     $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']));
 	}
 	catch (PDOException $e) {
-	//tarkista etta tasta tullaan ulos jos ei onnistunut
 	 echo "<script>alert('Tapahtumarivin lisääminen tietokantaan ei onnistu');</script>";
 	}
 }
