@@ -11,7 +11,6 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 //lisayksen tarkistaminen ensin, sitten tapahtumat tulostetaan esille
 if (isset($_POST['ruoka'])){
 	try {
@@ -44,7 +43,7 @@ if($rivi2) {
 	}
 	}
 	else {
-	$id = $rivi3.id;
+	$id = $rivi3['id'];
 	}
 	//eli paiva on olemassa lisaa riveja
 	try {
