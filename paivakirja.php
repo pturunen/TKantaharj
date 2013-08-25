@@ -43,15 +43,15 @@ if (!isset($_SESSION["kayttaja"])) {
       <fieldset>
         <legend>Päiväkirja tapahtumien lisäys</legend>
 		Päivamäärä:
-		<input type="text" name="paiva" value="2013-08-29" />;
+		<input type="text" name="paiva" value="2013-08-29" />
 		Paino:
-		<input type="text" name="paino"  />;
+		<input type="text" name="paino"  />
 		Selite:
-		<input type="text" name="selite"  />;
+		<input type="text" name="selite"  />
 		<br>
 		
 		<br>
-        <input type="submit" value="Hae tapahtumia" />
+        <input type="submit" value="Lisää tapahtumia" />
       </fieldset>
     </form>
 	
