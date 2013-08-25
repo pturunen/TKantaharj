@@ -29,7 +29,7 @@ if($rivi2) {
    try {
 		$kysely3 = $yhteys->prepare('SELECT * FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
 		$kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
-		$rivi3 = $kysely3->fetch();
+		$rivi3 = $kysely3->fetchObject();
 		if ($rivi3){
 		$_SESSION['tapahtumaid'] = $rivi3->id;
 		}
