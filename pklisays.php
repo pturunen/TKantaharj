@@ -55,6 +55,7 @@ if($rivi2) {
 	//eli paiva on olemassa lisaa riveja
 //3 lisää riveja energiansaanti tauluun
 	try {
+	echo "lisataan rivi energiansaantitauluun";
 	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
     $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']));
 	}
