@@ -107,7 +107,7 @@ catch (PDOException $e) {
 	<p></p>
       <fieldset>
         <legend>Päiväkirja tapahtumat</legend>
-		<table border>";
+		<table border>
 		<tr>
 		<td>PÄIVÄKIRJA TAPAHTUMAT</td>
 		</tr>
