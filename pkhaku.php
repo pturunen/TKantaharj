@@ -105,8 +105,8 @@ catch (PDOException $e) {
 			<td><?php echo $rivi["emaara"]?></td> 
 			<td>energia</td>
 			<td><?php echo $saatuenergia?></td>
-			<td> <input type="checkbox" name="listapois[]" value= <?php $rivi["eid"] ?> > </td>
-			<td> <input type="checkbox" name="listamuokkaa[]" value= <?php $rivi["eid"] ?> > </td>
+			<td> <input type="checkbox" name="listapois[]" value= <?php echo $rivi["eid"] ?> > </td>
+			<td> <input type="checkbox" name="listamuokkaa[]" value= <?php echo $rivi["eid"] ?> > </td>
 			</tr>
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
