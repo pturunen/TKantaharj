@@ -67,6 +67,10 @@ else {
 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt tietokannasta,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
 }	
 }
+if (empty($_POST['paiva']){
+echo "s post paiva on jo tyhja";
+}
+
 //tapahtumapaivan rivien paivitys naytolle joka kerta
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
 	if (!isset($_POST['paiva'])){
