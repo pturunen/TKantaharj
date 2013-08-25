@@ -39,7 +39,6 @@ try {
 	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
     $kysely->execute(array($_SESSION['kayttaja'],'energia' ));
 	}
-	}
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
