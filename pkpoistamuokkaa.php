@@ -19,7 +19,7 @@ $listapoistettava = $_POST['listapois'];
 $poista = true;
 }
 if (!empty($_POST['listamuokkaa'])){
-$listamuokattava = $_POST['listamuokattava'];
+$listamuokattava = $_POST['listamuokkaa'];
 $muokkaa = true;
 }	
 if (!$poista && !$muokkaa){
