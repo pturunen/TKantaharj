@@ -1,8 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION["kayttaja"])) {
+    $_SESSION['virhe'] = 'et ole kirjautunut';
     header("Location: eka.html");
-    die();
+    die(echo "<script>alert('Failure!');</script>";);
 }
 ?>
 <!DOCTYPE html>
