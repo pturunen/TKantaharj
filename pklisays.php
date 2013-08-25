@@ -30,6 +30,9 @@ if($rivi2) {
 		$kysely3 = $yhteys->prepare('SELECT id FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
 		$kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
 		$rivi3 = $kysely3->fetch();
+		if ($rivi3){
+		$_SESSION['tapahtumaid'] = $rivi3->id;
+		}
 	}
 	catch (PDOException $e) {
 		echo "<script>alert('No nyt pomppas');</script>";
@@ -41,23 +44,20 @@ if($rivi2) {
 	try {
 	$kysely4 = $yhteys->prepare('INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite) VALUES (?,?,?,?)');
     $kysely4->execute(array($_SESSION['lisayspaiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']));
-	$id = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
+	//$id = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
+	$_SESSION['tapahtumaid'] = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
 	}
 	catch (PDOException $e) {
 	//tarkista etta tasta tullaan ulos jos ei onnistunut
 	 echo "<script>alert('Tapahtuman lisääminen tietokantaan ei onnistu tälle päivälle');</script>";
 	}
 	}
-	else {
-	echo "tapahtumapaiva oli jo, kaytetaan sen id";
-	$id = $rivi3->id;
-	}
 	//eli paiva on olemassa lisaa riveja
 //3 lisää riveja energiansaanti tauluun
 	try {
 	echo "lisataan rivi energiansaantitauluun";
 	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
-    $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']));
+    $kysely5->execute(array($_SESSION['tapahtumaid'],$_POST['ruoka'],$_POST['maara']));
 	}
 	catch (PDOException $e) {
 	 echo "<script>alert('Tapahtumarivin lisääminen tietokantaan ei onnistu');</script>";
