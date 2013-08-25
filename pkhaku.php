@@ -121,7 +121,7 @@ catch (PDOException $e) {
 		<td>ENERGIAN SAANTI KJ</td>
 		</tr>
 		while ( <?php $rivi ?> ) {
-		   <?php $saatuenergia = <?php ($rivi["pmaara"]/100)*$rivi["emaara"];?>
+		   <?php $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];?>
 			<tr>
 			<td><?php $rivi["paiva"]?></td>
 			<td><?php $rivi["paino"]?> </td>
