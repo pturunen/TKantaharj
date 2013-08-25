@@ -123,13 +123,13 @@ catch (PDOException $e) {
 		<?php while (  $rivi  ) {
 		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];?>
 			<tr>
-			<td><?php $rivi["paiva"]?></td>
-			<td><?php $rivi["paino"]?> </td>
-			<td><?php $rivi["seli"]?></td>
-			<td><?php $rivi["ruoka"]?></td>
-			<td><?php $rivi["emaara"]?></td> 
+			<td><?php echo $rivi["paiva"]?></td>
+			<td><?php echo $rivi["paino"]?> </td>
+			<td><?php echo $rivi["seli"]?></td>
+			<td><?php echo $rivi["ruoka"]?></td>
+			<td><?php echo $rivi["emaara"]?></td> 
 			<td>energia</td>
-			<td><?php $saatuenergia?></td>
+			<td><?php echo $saatuenergia?></td>
 			</tr>
 			<?php $rivi = $kysely->fetch();
 		}?>
