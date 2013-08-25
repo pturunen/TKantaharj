@@ -49,8 +49,6 @@ if (!isset($_SESSION["kayttaja"])) {
 		Selite:
 		<input type="text" name="selite"  />
 		<br>
-		
-		<br>
         <input type="submit" value="Lisää tapahtumia" />
       </fieldset>
     </form>

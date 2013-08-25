@@ -54,35 +54,7 @@ catch (PDOException $e) {
 	echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
 	//echo "Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona! <br>";
 	}
-	else {
-		/*echo "<table border>";
-		echo "<tr>";
-		echo "<td>" . "  ". "PÄIVÄKIRJA TAPAHTUMAT" . " " ."</td>";
-		echo "</tr>";
-		echo "<tr>";
-		echo "<td>" . "  ". "PÄIVÄMÄÄRÄ" . " " ."</td>";
-		echo "<td>" . "  ". "PAINO" . " " ."</td>";
-		echo "<td>" . "  ". "SELITE" . " " ."</td>";
-		echo "<td>" . "  ". "RUOKA-AINE" . " " ."</td>";
-		echo "<td>" . "  ". "MÄÄRÄ" . " " ."</td>";
-		echo "<td>" . "  ". "PERUSRAVINTOAINE" . " " ."</td>";
-		echo "<td>" . "  ". "ENERGIAN SAANTI KJ" . " " ."</td>";
-		echo "</tr>";
-		while ($rivi) {
-		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];
-			echo "<tr>";
-			echo "<td>" . $rivi["paiva"] . "</td>";
-			echo "<td>" . $rivi["paino"] . "</td>";
-			echo "<td>" . $rivi["seli"] . "</td>"; 
-			echo "<td>" . $rivi["ruoka"] . "</td>";
-			echo "<td>" . $rivi["emaara"] . "</td>"; 
-			echo "<td>" . "energia" . "</td>";
-			echo "<td>" . $saatuenergia . "</td>";
-			echo "</tr>";
-			$rivi = $kysely->fetch();
-		}
-		echo "</table>";
-		*/
+	else { 
 		?>
 <!DOCTYPE html>
 <html>
