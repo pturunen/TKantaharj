@@ -49,7 +49,7 @@ if($rivi2) {
 	//eli paiva on olemassa lisaa riveja
 	try {
 	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
-    $kysely5->execute(array(2,$_POST['ruoka'],$_POST['maara']));
+    $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']));
 	}
 	catch (PDOException $e) {
 	//tarkista etta tasta tullaan ulos jos ei onnistunut
