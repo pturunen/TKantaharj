@@ -39,6 +39,24 @@ if (!isset($_SESSION["kayttaja"])) {
         <input type="submit" value="Hae tapahtumia" />
       </fieldset>
     </form>
+	<form action="pklisays.php" method="POST">
+      <fieldset>
+        <legend>Päiväkirja tapahtumien lisäys</legend>
+		Päivamäärä:
+		<input type="text" name="paiva" value="2013-08-29" />;
+		Paino:
+		<input type="text" name="paino"  />;
+		Selite:
+		<input type="text" name="selite"  />;
+		<br>
+		
+		<input type="text" name="paivastart" value="2013-08-24"/> - <input type="text" name="paivaend" value="2013-08-24"/>
+		<br>
+        <input type="submit" value="Hae tapahtumia" />
+      </fieldset>
+    </form>
+	
+	
     <footer>
 	<p><a href="paivakirja.php">Peruuta</a></p>
     <p><a href="eka.html">Takaisin etusivulle</a></p>
