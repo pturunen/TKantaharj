@@ -31,7 +31,7 @@ foreach($listapoistettava as $erivi){
     $kysely->execute(array("{$erivi}"));
 	}
 catch (PDOException $e) {
-    //die("VIRHE: " . $e->getMessage());
+   echo "<script>alert('No nyt pomppas');</script>";
 }
 }
 
