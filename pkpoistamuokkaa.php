@@ -26,6 +26,7 @@ if (!$poista && !$muokkaa){
 echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</script>";
 }
 foreach($listapoistettava as $erivi){
+echo "$erivi";
 	$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
     $kysely->execute(array($erivi));
 }
