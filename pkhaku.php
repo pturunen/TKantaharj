@@ -131,7 +131,7 @@ catch (PDOException $e) {
 			<td>energia</td>
 			<td><?php echo $saatuenergia?></td>
 			</tr>
-			<?php $rivi = $kysely->fetch();
+			<?php $rivi = $kysely->fetch() 
 		}?>
 		</table>
 		<br>
