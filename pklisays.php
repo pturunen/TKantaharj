@@ -34,8 +34,10 @@ if($rivi2) {
 	catch (PDOException $e) {
 		echo "<script>alert('No nyt pomppas');</script>";
 	}
+	echo "tapahtumapaiva id noudettu";
 	if (!$rivi3) {
 	//eli lisaa tapahtumapaiva rivi ensin
+	echo "tapahtumapaiva rivia ei ollut viela";
 	try {
 	$kysely4 = $yhteys->prepare('INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite) VALUES (?,?,?,?)');
     $kysely4->execute(array($_SESSION['lisayspaiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']));
@@ -47,6 +49,7 @@ if($rivi2) {
 	}
 	}
 	else {
+	echo "tapahtumapaiva oli jo, kaytetaan sen id";
 	$id = $rivi3->id;
 	}
 	//eli paiva on olemassa lisaa riveja
