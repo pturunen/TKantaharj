@@ -27,7 +27,7 @@ if (isset($_POST['ruoka'])){
 if($rivi2) {
 //2 tarkista joko tapatumapaiva on lisatty
    try {
-		$kysely3 = $yhteys->prepare('SELECT id FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
+		$kysely3 = $yhteys->prepare('SELECT * FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
 		$kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
 		$rivi3 = $kysely3->fetch();
 		if ($rivi3){
