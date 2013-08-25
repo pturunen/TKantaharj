@@ -14,36 +14,24 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (!empty($_POST['listapois'])){
-$listapoistettava = $_POST['listapois'];
-$poista = true;
-}
-if (!empty($_POST['listamuokkaa'])){
-$listamuokattava = $_POST['listamuokkaa'];
-$muokkaa = true;
-}	
-if (!$poista && !$muokkaa){
-echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</script>";
-}
-foreach($listapoistettava as $erivi){
  try{
-	$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
-    $kysely->execute(array("{$erivi}"));
+	$kysely = $yhteys->prepare('UPDATE energiansaanti SET ruoka = ?, maara = ? WHERE id = ?');
+    $kysely->execute(array($_POST['ruoka'],$_POST['maara'],$_SESSION['muokattavaid']));
+	$kysely = $yhteys->prepare('UPDATE tapahtumapaiva SET paino = ?, selite = ? WHERE  paiva= ?');
+    $kysely->execute(array($_POST['paino'],$_POST['selite'],$_SESSION['muokattavapaiva']));
 	}
 catch (PDOException $e) {
    echo "<script>alert('No nyt pomppas');</script>";
 }
-}
-foreach($listamuokattava as $mrivi){
-}
-//hae kyselyllä muutettava rivi, korjaa ruksi valintaa siten etta vain yksi ruksi muokattavaksi kerrallaan
+
+//hae kyselyllä muutettu rivi
 try {
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
-	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
+	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE energiansaanti.id = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
 	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
-    $kysely->execute(array("{$mrivi}",'energia' ));
+    $kysely->execute(array($_SESSION['muokattavaid'],'energia' ));
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
@@ -75,18 +63,16 @@ catch (PDOException $e) {
     <img src="paivakirja.jpg" title="LightenYourLife" width="120" height="80" alt="LightenYourLife" />
 	<h1> Päiväkirja tapahtumat</h1>
 	<p></p>
-	  <form action="pkupdate.php" method="POST">
       <fieldset>
         <legend>Päiväkirja tapahtumat</legend>
 		<table border>
 		<tr>
-		<td>MUOKATTAVA TAPAHTUMA</td>
+		<td>MUOKATTU TAPAHTUMA</td>
 		</tr>
 		<tr>
 		<td>PÄIVÄMÄÄRÄ</td>
 		<td>PAINO</td>
 		<td>SELITE</td>
-		<td>ID</td>
 		<td>RUOKA-AINE</td>
 		<td>MÄÄRÄ</td>
 		<td>PERUSRAVINTOAINE</td>
@@ -95,13 +81,10 @@ catch (PDOException $e) {
 		<?php while (  $rivi  ) { ?>
 			<tr>
 			<td><?php echo $rivi["paiva"]?></td>
-			<td> <input type="text" name="paino" value=<?php echo $rivi["paino"]?> > </td>
-			<?php  $_SESSION['muokattavapaiva'] = $rivi["paiva"]?>
-			<td> <input type="text" name="selite" value=<?php echo $rivi["seli"]?> > </td>
-			<td> <?php echo $rivi["eid"]?>  </td>
-			<?php  $_SESSION['muokattavaid'] = $rivi["eid"]?>
-			<td> <input type="text" name="ruoka" value=<?php echo $rivi["ruoka"]?> > </td>
-			<td> <input type="text" name="maara" value=<?php echo $rivi["emaara"]?> > </td> 
+			<td> <?php echo $rivi["paino"]?> </td>
+			<td> <?php echo $rivi["seli"]?> </td>
+			<td> <?php echo $rivi["ruoka"]?> </td>
+			<td> <?php echo $rivi["emaara"]?> </td> 
 			<td>energia</td>
 			<?php $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] ?> 
 			<td><?php echo $saatuenergia?></td>
@@ -109,10 +92,8 @@ catch (PDOException $e) {
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
 		</table>
-		<input type="submit" value="Muuta" />
 		<br>
       </fieldset>
-	  </form>
   </body>
   </head>
   </html>		
@@ -122,13 +103,10 @@ catch (PDOException $e) {
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
     //echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote2.php\">Lisaa ravintoaineelle lisätietoja <br></a>";
-	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"paivakirja.php\">edellinen sivu <br></a>";
+	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"paivakirja.php\">Paivakirja pääsivu <br></a>";
     //echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos<br></a>";
 	}
-
-
-
 ?>
 <p><a href="haku.php">siirry raaka-aine hakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
