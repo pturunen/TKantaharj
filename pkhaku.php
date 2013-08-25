@@ -92,6 +92,7 @@ catch (PDOException $e) {
 		<td>MÄÄRÄ</td>
 		<td>PERUSRAVINTOAINE</td>
 		<td>ENERGIAN SAANTI KJ</td>
+		<td>Valitse</td>
 		</tr>
 		<?php while (  $rivi  ) {
 		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] ?>
@@ -103,7 +104,7 @@ catch (PDOException $e) {
 			<td><?php echo $rivi["emaara"]?></td> 
 			<td>energia</td>
 			<td><?php echo $saatuenergia?></td>
-			<input type="checkbox" name="lista[]" value= <?php $rivi["eid"] ?> >
+			<td> <input type="checkbox" name="lista[]" value= <?php $rivi["eid"] ?> > </td>
 			</tr>
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
