@@ -12,18 +12,22 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
-if (!isset($_POST['paiva'])){
-$_POST['paiva'] = $_SESSION['lisayspaiva'];
-}
-$_SESSION['lisayspaiva'] = $_POST['paiva'];
+	if (!isset($_POST['paiva'])){
+	$_POST['paiva'] = $_SESSION['lisayspaiva'];
+	}
+	$_SESSION['lisayspaiva'] = $_POST['paiva'];
+	try {
 $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
 	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ?');
     $kysely->execute(array($_SESSION['kayttaja'],'energia',$_SESSION['lisayspaiva'] ));
-	}
 	$rivi = $kysely->fetch();
+	}
+	 catch (PDOException $e) {
+   // die("VIRHE: " . $e->getMessage());
+}
 }
 ?>
 <!DOCTYPE html>
