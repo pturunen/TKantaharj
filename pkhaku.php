@@ -39,7 +39,7 @@ try {
 	}
 	else {
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
-	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
+	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
 	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ? ORDER BY paiva');
@@ -77,6 +77,7 @@ catch (PDOException $e) {
     <img src="paivakirja.jpg" title="LightenYourLife" width="120" height="80" alt="LightenYourLife" />
 	<h1> Päiväkirja tapahtumat</h1>
 	<p></p>
+	  <form action="pkpoista.php" method="POST">
       <fieldset>
         <legend>Päiväkirja tapahtumat</legend>
 		<table border>
@@ -102,12 +103,14 @@ catch (PDOException $e) {
 			<td><?php echo $rivi["emaara"]?></td> 
 			<td>energia</td>
 			<td><?php echo $saatuenergia?></td>
+			<input type="checkbox" name="lista[]" value= <?php $rivi["eid"] ?> >
 			</tr>
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
 		</table>
 		<br>
       </fieldset>
+	  </form>
   </body>
   </head>
   </html>		
@@ -125,7 +128,7 @@ catch (PDOException $e) {
 
 
 ?>
-<p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
+<p><a href="haku.php">siirry raaka-aine hakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
 
 

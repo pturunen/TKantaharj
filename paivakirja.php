@@ -56,6 +56,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	
     <footer>
 	<p><a href="paivakirja.php">Peruuta</a></p>
+	<p><a href="haku.php">Siirry raaka-aine hakuun</a></p>
     <p><a href="eka.html">Takaisin etusivulle</a></p>
     </footer>
   </body>

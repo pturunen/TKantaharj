@@ -37,25 +37,20 @@ if($rivi2) {
 	catch (PDOException $e) {
 		echo "<script>alert('No nyt pomppas');</script>";
 	}
-	echo "tapahtumapaiva id noudettu";
+	
 	if (!$rivi3) {
 	//eli lisaa tapahtumapaiva rivi ensin
-	echo "tapahtumapaiva rivia ei ollut viela";
 	try {
 	$kysely4 = $yhteys->prepare('INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite) VALUES (?,?,?,?)');
     $kysely4->execute(array($_SESSION['lisayspaiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']));
-	//$id = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
 	$_SESSION['tapahtumaid'] = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
 	}
 	catch (PDOException $e) {
-	//tarkista etta tasta tullaan ulos jos ei onnistunut
 	 echo "<script>alert('Tapahtuman lisääminen tietokantaan ei onnistu tälle päivälle');</script>";
 	}
 	}
-	//eli paiva on olemassa lisaa riveja
 //3 lisää riveja energiansaanti tauluun
 	try {
-	echo "lisataan rivi energiansaantitauluun";
 	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
     $kysely5->execute(array($_SESSION['tapahtumaid'],$_POST['ruoka'],$_POST['maara']));
 	}
@@ -67,10 +62,6 @@ else {
 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt tietokannasta,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
 }	
 }
-if (empty($_POST['paiva'])){
-echo "s post paiva on jo tyhja";
-}
-
 //tapahtumapaivan rivien paivitys naytolle joka kerta
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
 	if (!empty($_POST['paiva'])){
@@ -87,7 +78,6 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	}
 	 catch (PDOException $e) {
 	 echo "<script>alert('Tapahtumien haku tietokannasta epäonnistui');</script>";
-   // die("VIRHE: " . $e->getMessage());
 }
 }
 else {
@@ -163,6 +153,7 @@ else {
 	
     <footer>
 	<p><a href="paivakirja.php">Peruuta</a></p>
+	<p><a href="haku.php">Siirry tuotehaku sivulle</a></p>
     <p><a href="eka.html">Takaisin etusivulle</a></p>
     </footer>
   </body>
