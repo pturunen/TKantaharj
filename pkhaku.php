@@ -120,8 +120,8 @@ catch (PDOException $e) {
 		<td>PERUSRAVINTOAINE</td>
 		<td>ENERGIAN SAANTI KJ</td>
 		</tr>
-		while ( <?php $rivi ?> ) {
-		   <?php $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];?>
+		<?php while (  $rivi  ) {
+		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"];?>
 			<tr>
 			<td><?php $rivi["paiva"]?></td>
 			<td><?php $rivi["paino"]?> </td>
@@ -131,8 +131,8 @@ catch (PDOException $e) {
 			<td>energia</td>
 			<td><?php $saatuenergia?></td>
 			</tr>
-			<?php $rivi = $kysely->fetch();?>
-		}
+			<?php $rivi = $kysely->fetch();
+		}?>
 		</table>
 		<br>
       </fieldset>
