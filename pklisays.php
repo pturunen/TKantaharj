@@ -23,8 +23,8 @@ if (isset($_POST['ruoka'])){
 	}
 if($rivi2) {
    try {
-	$kysely3 = $yhteys->prepare('SELECT paiva,id FROM tapahtumapaiva WHERE tunnus = ?');
-    $kysely3->execute(array($_SESSION["kayttaja"]));
+	$kysely3 = $yhteys->prepare('SELECT id FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
+    $kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
 	$rivi3 = $kysely3->fetch();
 	}
 	catch (PDOException $e) {
