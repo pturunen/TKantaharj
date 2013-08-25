@@ -11,24 +11,28 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 //lisayksen tarkistaminen ensin, sitten tapahtumat tulostetaan esille
+//1 tarkista onko ruoka ruokaaine taulussa
 if (isset($_POST['ruoka'])){
 	try {
-	$kysely2 = $yhteys->prepare('SELECT nimi from raakaaine where nimi = ?');
-    $kysely2->execute(array($_POST['ruoka'] ));
-	$rivi2 = $kysely2->fetch();
+		$kysely2 = $yhteys->prepare('SELECT nimi FROM raakaaine WHERE nimi = ?');
+		$kysely2->execute(array($_POST['ruoka'] ));
+		$rivi2 = $kysely2->fetch();
 	}
 	catch (PDOException $e) {
-	 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
+		echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
 	}
+	
 if($rivi2) {
+//2 tarkista joko tapatumapaiva on lisatty
    try {
-	$kysely3 = $yhteys->prepare('SELECT id FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
-    $kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
-	$rivi3 = $kysely3->fetch();
+		$kysely3 = $yhteys->prepare('SELECT id FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
+		$kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
+		$rivi3 = $kysely3->fetch();
 	}
 	catch (PDOException $e) {
-	 echo "<script>alert('No nyt pomppas');</script>";
+		echo "<script>alert('No nyt pomppas');</script>";
 	}
 	if (!$rivi3) {
 	//eli lisaa tapahtumapaiva rivi ensin
@@ -46,6 +50,7 @@ if($rivi2) {
 	$id = $rivi3['id'];
 	}
 	//eli paiva on olemassa lisaa riveja
+//3 lisää riveja energiansaanti tauluun
 	try {
 	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
     $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']));
@@ -56,7 +61,7 @@ if($rivi2) {
 	}
 }	
 }
-
+//tapahtumapaivan rivien paivitys naytolle joka kerta
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
 	if (!isset($_POST['paiva'])){
 	$_POST['paiva'] = $_SESSION['lisayspaiva'];
