@@ -72,7 +72,7 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ?');
+	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ? GROUP BY tapahtumapaiva.paiva');
     $kysely->execute(array($_SESSION['kayttaja'],'energia',$_SESSION['lisayspaiva'] ));
 	$rivi = $kysely->fetch();
 	}
