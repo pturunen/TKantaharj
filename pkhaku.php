@@ -34,7 +34,7 @@ try {
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva BETWEEN ? and ?');
+	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva BETWEEN ? and ? ORDER BY paiva');
     $kysely->execute(array($_SESSION['kayttaja'],'energia',$_POST['paivastart'],$_POST['paivaend'] ));
 	}
 	else {
@@ -42,7 +42,7 @@ try {
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ?');
+	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ? ORDER BY paiva');
     $kysely->execute(array($_SESSION['kayttaja'],'energia',$_POST['paivastart'] ));
 	}
 	$rivi = $kysely->fetch();
