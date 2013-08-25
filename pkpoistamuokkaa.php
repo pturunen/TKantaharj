@@ -28,10 +28,9 @@ echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</scrip
 foreach($listapoistettava as $erivi){
  try{
 	$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
-    $kysely->execute(array($erivi));
+    $kysely->execute(array("{$erivi}"));
 	}
 catch (PDOException $e) {
-echo "$erivi";
     //die("VIRHE: " . $e->getMessage());
 }
 }
