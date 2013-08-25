@@ -27,19 +27,38 @@ try {
 	WHERE tunnus = ? && tunnus == tapahtumapaiva.tunnus && tapahtumapaiva.id == energiansaanti.tapid && 
 	energiansaanti.ruoka == perusravintoaineet.nimi');
 	*/
+	if ($haekaikki){
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
 	perusravintoaineet.ravintotekija = ?');
     $kysely->execute(array($_SESSION['kayttaja'],'energia' ));
+	}
+	else if ($haevali){
+	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
+	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
+	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
+	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
+	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva BETWEEN ? and ?');
+    $kysely->execute(array($_SESSION['kayttaja'],'energia',$_POST['paivastart'],$_POST['paivaend'] ));
+	}
+	else {
+	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
+	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
+	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
+	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
+	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ?');
+    $kysely->execute(array($_SESSION['kayttaja'],'energia',$_POST['paivastart'] ));
+	}
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
     echo "VIRHE: " . $e->getMessage();
 }
 	if (empty($rivi)){
-	echo "Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona! <br>";
+	echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
+	//echo "Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona! <br>";
 	}
 	else {
 		echo "<table border>";
@@ -73,7 +92,7 @@ catch (PDOException $e) {
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote2.php\">Lisaa ravintoaineelle lisätietoja <br></a>";
-	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"satunnainenkavija.php\">edellinen sivu <br></a>";
+	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"paivakirja.php\">edellinen sivu <br></a>";
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos<br></a>";
 	}
