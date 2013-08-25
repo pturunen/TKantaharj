@@ -91,7 +91,7 @@ catch (PDOException $e) {
 		<td>PERUSRAVINTOAINE</td>
 		<td>ENERGIAN SAANTI KJ</td>
 		</tr>
-		<?php while (  $rivi  ) {
+		<?php while (  $rivi  ) { ?>
 			<tr>
 			<td><?php echo $rivi["paiva"]?></td>
 			<td> <input type="text" name="paino" value=<?php echo $rivi["paino"]?> > </td>
