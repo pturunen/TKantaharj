@@ -35,7 +35,7 @@ if($rivi2) {
 	//eli lisaa tapahtumapaiva rivi ensin
 	try {
 	$kysely4 = $yhteys->prepare('INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite) VALUES (?,?,?,?)');
-    $kysely4->execute(array($_POST['paiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']);
+    $kysely4->execute(array($_POST['paiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']));
 	$id = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
 	}
 	catch (PDOException $e) {
@@ -49,7 +49,7 @@ if($rivi2) {
 	//eli paiva on olemassa lisaa riveja
 	try {
 	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
-    $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']);
+    $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']));
 	}
 	catch (PDOException $e) {
 	//tarkista etta tasta tullaan ulos jos ei onnistunut
