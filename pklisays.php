@@ -47,7 +47,7 @@ if($rivi2) {
 	}
 	}
 	else {
-	$id = $rivi3['id'];
+	$id = $rivi3->id;
 	}
 	//eli paiva on olemassa lisaa riveja
 //3 lisää riveja energiansaanti tauluun
