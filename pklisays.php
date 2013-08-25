@@ -28,7 +28,6 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	 catch (PDOException $e) {
    // die("VIRHE: " . $e->getMessage());
 }
-
 }
 else {
 	header("Location: paivakirja.php");
@@ -38,7 +37,7 @@ else {
 //lisayksen tarkistaminen 
 if (isset($_POST['ruoka'])){
 	try {
-	$kysely2 = $yhteys->prepare('SELECT ruoka from raakaaine where nimi = ?');
+	$kysely2 = $yhteys->prepare('SELECT nimi from raakaaine where nimi = ?');
     $kysely2->execute(array($_POST['ruoka'] ));
 	$rivi2 = $kysely2->fetch();
 	}
