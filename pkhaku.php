@@ -16,9 +16,9 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['aika']) && $_POST['aika'] == 'all'){
 $haekaikki = true;
-	if (isset($_POST['aika']) && $_POST['aika'] == 'val'){
+}
+else if (isset($_POST['aika']) && $_POST['aika'] == 'val'){
 		$haevali = true;
-	}
 }	
 try {
    /* $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva,tapahtumapaiva.paino,tapahtumapaiva.selite,
