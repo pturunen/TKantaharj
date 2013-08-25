@@ -19,6 +19,7 @@ if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
 	}
 	catch (PDOException $e) {
     //echo "VIRHE: " . $e->getMessage();
+	echo "<script>alert('Lisays ei onnistunut!');</script>";
 	}
 }
 try {
