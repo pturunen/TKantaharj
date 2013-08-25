@@ -14,12 +14,22 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['aika']) && $_POST['aika'] == 'all'){
-$haekaikki = true;
+if (!empty($_POST['listapois'])){
+$listapoistettava = $_POST['listapois'];
+$poista = true;
 }
-else if (isset($_POST['aika']) && $_POST['aika'] == 'val'){
-		$haevali = true;
+if (!empty($_POST['listamuokkaa'])){
+$listamuokattava = $_POST['listamuokattava'];
+$muokkaa = true;
 }	
+if (!$poista && !$muokkaa){
+echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</script>";
+}
+foreach($listapoistettava as $erivi){
+	$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
+    $kysely->execute(array({$erivi}));
+}
+
 try {
 	if ($haekaikki){
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
@@ -29,21 +39,6 @@ try {
 	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
     $kysely->execute(array($_SESSION['kayttaja'],'energia' ));
 	}
-	else if ($haevali){
-	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
-	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
-	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
-	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva BETWEEN ? and ? ORDER BY paiva');
-    $kysely->execute(array($_SESSION['kayttaja'],'energia',$_POST['paivastart'],$_POST['paivaend'] ));
-	}
-	else {
-	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
-	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
-	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
-	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ? and tapahtumapaiva.paiva = ? ORDER BY paiva');
-    $kysely->execute(array($_SESSION['kayttaja'],'energia',$_POST['paivastart'] ));
 	}
 	$rivi = $kysely->fetch();
 }
@@ -77,7 +72,7 @@ catch (PDOException $e) {
     <img src="paivakirja.jpg" title="LightenYourLife" width="120" height="80" alt="LightenYourLife" />
 	<h1> Päiväkirja tapahtumat</h1>
 	<p></p>
-	  <form action="pkpoistamuokkaa.php" method="POST">
+	  <form action="pkpoista.php" method="POST">
       <fieldset>
         <legend>Päiväkirja tapahtumat</legend>
 		<table border>
