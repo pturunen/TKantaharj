@@ -77,6 +77,7 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	$rivi = $kysely->fetch();
 	}
 	 catch (PDOException $e) {
+	 echo "<script>alert('Tapahtumien haku tietokannasta epäonnistui');</script>";
    // die("VIRHE: " . $e->getMessage());
 }
 }
