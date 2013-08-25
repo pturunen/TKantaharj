@@ -59,6 +59,9 @@ if($rivi2) {
 	//tarkista etta tasta tullaan ulos jos ei onnistunut
 	 echo "<script>alert('Tapahtumarivin lisääminen tietokantaan ei onnistu');</script>";
 	}
+}
+else {
+echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt tietokannasta,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
 }	
 }
 //tapahtumapaivan rivien paivitys naytolle joka kerta
