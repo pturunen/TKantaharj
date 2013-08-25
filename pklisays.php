@@ -11,6 +11,53 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//lisayksen tarkistaminen ensin, sitten tapahtumat tulostetaan esille
+if (isset($_POST['ruoka'])){
+	try {
+	$kysely2 = $yhteys->prepare('SELECT nimi from raakaaine where nimi = ?');
+    $kysely2->execute(array($_POST['ruoka'] ));
+	$rivi2 = $kysely2->fetch();
+	}
+	catch (PDOException $e) {
+	 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
+	}
+if($rivi2) {
+   try {
+	$kysely3 = $yhteys->prepare('SELECT paiva,id FROM tapahtumapaiva WHERE tunnus = ?');
+    $kysely3->execute(array($_SESSION["kayttaja"]));
+	$rivi3 = $kysely3->fetch();
+	}
+	catch (PDOException $e) {
+	 echo "<script>alert('No nyt pomppas');</script>";
+	}
+	if (!$rivi3) {
+	//eli lisaa tapahtumapaiva rivi ensin
+	try {
+	$kysely4 = $yhteys->prepare('INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite) VALUES (?,?,?,?)');
+    $kysely4->execute(array($_POST['paiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']);
+	$id = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
+	}
+	catch (PDOException $e) {
+	//tarkista etta tasta tullaan ulos jos ei onnistunut
+	 echo "<script>alert('Tapahtuman lisääminen tietokantaan ei onnistu tälle päivälle');</script>";
+	}
+	}
+	else {
+	$id = $rivi3.id;
+	}
+	//eli paiva on olemassa lisaa riveja
+	try {
+	$kysely5 = $yhteys->prepare('INSERT INTO energiansaanti (tapid,ruoka,maara) VALUES (?,?,?)');
+    $kysely5->execute(array($id,$_POST['ruoka'],$_POST['maara']);
+	}
+	catch (PDOException $e) {
+	//tarkista etta tasta tullaan ulos jos ei onnistunut
+	 echo "<script>alert('Tapahtumarivin lisääminen tietokantaan ei onnistu');</script>";
+	}
+}	
+}
+
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
 	if (!isset($_POST['paiva'])){
 	$_POST['paiva'] = $_SESSION['lisayspaiva'];
@@ -34,20 +81,6 @@ else {
     die();
 }
 
-//lisayksen tarkistaminen 
-if (isset($_POST['ruoka'])){
-	try {
-	$kysely2 = $yhteys->prepare('SELECT nimi from raakaaine where nimi = ?');
-    $kysely2->execute(array($_POST['ruoka'] ));
-	$rivi2 = $kysely2->fetch();
-	}
-	catch (PDOException $e) {
-	 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
-	}	
-}
-else {
-echo "<script>alert('Et antanut ruoka-ainetta!');</script>";
-}
 ?>
 <!DOCTYPE html>
 <html>
