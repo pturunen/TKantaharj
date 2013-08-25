@@ -28,6 +28,13 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	 catch (PDOException $e) {
    // die("VIRHE: " . $e->getMessage());
 }
+
+}
+else {
+	header("Location: paivakirja.php");
+    die();
+}
+
 //lisayksen tarkistaminen 
 if (isset($_POST['ruoka'])){
 	try {
@@ -115,5 +122,3 @@ echo "<script>alert('Et antanut ruoka-ainetta!');</script>";
   </body>
   </head>
   </html>
-
-
