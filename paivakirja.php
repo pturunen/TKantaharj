@@ -50,7 +50,6 @@ if (!isset($_SESSION["kayttaja"])) {
 		<input type="text" name="selite"  />;
 		<br>
 		
-		<input type="text" name="paivastart" value="2013-08-24"/> - <input type="text" name="paivaend" value="2013-08-24"/>
 		<br>
         <input type="submit" value="Hae tapahtumia" />
       </fieldset>
