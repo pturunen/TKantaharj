@@ -67,7 +67,7 @@ else {
 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt tietokannasta,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
 }	
 }
-if (empty($_POST['paiva']){
+if (empty($_POST['paiva'])){
 echo "s post paiva on jo tyhja";
 }
 
