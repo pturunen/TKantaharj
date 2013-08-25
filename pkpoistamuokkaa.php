@@ -34,16 +34,16 @@ catch (PDOException $e) {
    echo "<script>alert('No nyt pomppas');</script>";
 }
 }
-
+foreach($listamuokattava as $mrivi){
+}
+//hae kyselyllä muutettava rivi, korjaa ruksi valintaa siten etta vain yksi ruksi muokattavaksi kerrallaan
 try {
-	if ($haekaikki){
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
-	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
+	WHERE energiansaanti.id = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
 	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
-    $kysely->execute(array($_SESSION['kayttaja'],'energia' ));
-	}
+    $kysely->execute(array("{$mrivi}",'energia' ));
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
@@ -51,7 +51,6 @@ catch (PDOException $e) {
 }
 	if (empty($rivi)){
 	echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
-	//echo "Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona! <br>";
 	}
 	else { 
 		?>
