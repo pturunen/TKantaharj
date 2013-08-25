@@ -22,7 +22,9 @@
       <input type="text" name="nimi"> <input type="submit" value="Hae">
       
     </form>
-	<?php if (isset($_SESSION['kayttaja'])){ echo "<p><a href="paivakirja.php">Siirry paivakirjan sivuille</a></p>"; } ?>
+	<?php if (isset($_SESSION['kayttaja'])) { 
+	echo "<p><a href="paivakirja.php">Siirry paivakirjan sivuille</a></p>"; 
+	} ?>
 	<p><a href="eka.html">Takaisin etusivulle</a></p>
   </body>
 </html>
