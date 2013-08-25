@@ -11,7 +11,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-if (isset($_POST['paiva'] || $_SESSION['lisayspaiva']){
+if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva']){
 if (!isset($_POST['paiva'])){
 $_POST['paiva'] = $_SESSION['lisayspaiva'];
 }
