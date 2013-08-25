@@ -80,7 +80,7 @@ catch (PDOException $e) {
 	}
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
-	$_SESSION["tuotenimi"] = $_POST['nimi'];
+	$_SESSION["tuotenimi"] = $_GET['nimiparametri'];
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote2.php\">Lisaa ravintoaineelle lisätietoja <br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"satunnainenkavija.php\">edellinen sivu <br></a>";
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
