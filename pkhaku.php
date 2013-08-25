@@ -26,7 +26,7 @@ try {
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
 	WHERE tapahtumapaiva.tunnus = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ?');
+	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
     $kysely->execute(array($_SESSION['kayttaja'],'energia' ));
 	}
 	else if ($haevali){
