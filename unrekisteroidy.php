@@ -30,9 +30,9 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	if ($kayttaja) {
 			?> 
 			<form action="unrekisteroidy.php" method="POST">
-			Haluatko varmasti poistaa k‰ytt‰j‰ tunnuksesi?
+			Haluatko varmasti poistaa k√§ytt√§j√§ tunnuksesi?
 			<input type="radio" name="varmistus" value="e" checked> en <br>
-		    <input type="radio" name="varmistus" value="k" > kyll‰ <br>
+		    <input type="radio" name="varmistus" value="k" > kyll√§ <br>
 			<input type="submit" value="Vahvista" />
 			</form>
 			<?php
