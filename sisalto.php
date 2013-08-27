@@ -28,6 +28,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	<p><a href="paivakirja.php">Siirry päiväkirjaan</a></p>
 	<p><a href="haku.php">Siirry tuotehakuun</a></p>
 	<p><a href="lisaatuote.html">Lisaa uusi raaka-aine</a></p>
+	<p><a href="unrekisteroidy.php">Poista tunnuksesi tietokannasta</a></p>
 	<p><a href="ulos.php">Kirjaudu ulos</a></p>
   </body>
   </head>
