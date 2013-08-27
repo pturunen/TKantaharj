@@ -4,7 +4,7 @@ if (!isset($_SESSION["kayttaja"])) {
     header("Location: eka.html");
     die();
 }
-if isset($_POST["varmistus"])) {
+if (isset($_POST["varmistus"])) {
     if ($_POST["varmistus"] = 'e'){
 	header("Location: sisalto.php");
     die();
