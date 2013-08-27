@@ -5,7 +5,7 @@ if (!isset($_SESSION["kayttaja"])) {
     die();
 }
 if (isset($_POST["varmistus"])) {
-    if ($_POST["varmistus"] = 'e'){
+    if ($_POST["varmistus"] == 'e'){
 	header("Location: ulos.php");
     die();
 	}
@@ -21,7 +21,7 @@ try {
 
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_SESSION['varmistus']) && $_SESSION['varmistus'] = 'poista'){
+if (isset($_SESSION['varmistus']) && $_SESSION['varmistus'] == 'poista'){
 try {
     $kysely2 = $yhteys->prepare('DELETE from rekisteri where tunnus = ?');
     $onnistuiko = $kysely2->execute(array($_SESSION["kayttaja"]));
