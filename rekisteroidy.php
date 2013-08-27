@@ -14,10 +14,11 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //$aika->execute();
 //$kannanpvm = $aika->fetch();
 $genre = 'm';
-if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
+if (isset($_POST['tunnus']) && isset($_POST['salasana']) && !empty($_POST['tunnus']) && !empty($_POST['salasana'])) {
     if ($_POST['sukupuoli'] == 'nainen'){
 	$genre = 'f';
 	}
+	try{
     $kysely = $yhteys->prepare('INSERT INTO rekisteri (tunnus,salasana,luontipvm,sukupuoli,pituus,paino,ika) VALUES (?,?,?,?,?,?,?)');
     $onnistuiko = $kysely->execute(array($_POST["tunnus"], $_POST["salasana"],DATE('Y-m-d'),$genre,$_POST["pituus"],$_POST["paino"],$_POST["ika"]));
 	if ($onnistuiko) {
@@ -30,7 +31,11 @@ if (isset($_POST['tunnus']) && isset($_POST['salasana'])) {
 			header("Location: sisalto.php");
 			die();
 		} 
-	} 
+	}
+}
+catch (PDOException $e) {
+    echo "<script>alert('Virheelline tunnus/salasana!');</script>";
+}	
 }
 else {
 header("Location: eka.html");
