@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+	body {background-color:#d0e4fe;}
+	h1 {
+	color:orange;
+	text-align:center;
+	}
+	p {color:blue;
+	font-size:15px
+	}
+	fieldset { font-size:12px }
+	</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>LightenYourLife rekisteröityminen käyttäjäksi</title>
+  </head>
+  <p style="color: red">  Antamasi tunnus/salasana on virheellinen!</p>
+  <p style="color: red"> Anna tunnus ja salasana uudestaan tai poistu takaisin etusivulle</p>
+  <body>
+	<h1> LightenYourLife -- Tervetuloa!</h1>
+	<p></p>
+    <form action="rekisteroidy.php" method="POST">
+      <fieldset>
+        <legend>Rekisteröitymis lomake</legend>
+        <label for="tunnus">Käyttäjätunnus:</label>
+        <input type="text" name="tunnus" />
+        <label for="salasana">Salasana:</label>
+        <input type="password" name="salasana" /> <br>
+		<input type="radio" name="sukupuoli" value="f" checked> nainen <br>
+		<input type="radio" name="sukupuoli" value="m" > mies <br>
+		<label for="pituus">Pituus:</label>
+		<select name="pituus">
+		<option value="130"> 130
+		<option value="140"> 140
+		<option value="150"> 150
+		<option value="155"> 155
+		<option value="160" selected> 160
+		<option value="165"> 165
+		<option value="170"> 170
+		<option value="175"> 175
+		<option value="180"> 180
+		<option value="185"> 185
+		<option value="190"> 190
+		<option value="195"> 195
+		<option value="200"> 200
+		</select>
+		<label for="paino">Paino:</label>
+		<input type="text" name="paino" />
+		<label for="ika">Ika:</label>
+		<input type="text" name="ika" />
+        <input type="submit" value="Kirjaudu" />
+      </fieldset>
+    </form>
+    <footer>
+	<p><a href="rekisteroidy.html">Peruuta</a></p>
+    <p><a href="eka.html">Takaisin etusivulle</a></p>
+    </footer>
+  </body>
+</html>
+
