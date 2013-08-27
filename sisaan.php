@@ -10,7 +10,8 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['tunnus']) && !empty($_POST['tunnus'] && !empty($_POST['salasana'])) {
+if (isset($_POST['tunnus']) && !empty($_POST['tunnus']) && !empty($_POST['salasana'])) {
+    if (strlen($_POST['tunnus']) > 0 && strlen($_POST['salasana']) > 0){
     $kysely = $yhteys->prepare('SELECT * FROM rekisteri WHERE tunnus = ? and salasana = ?');
     $kysely->execute(array($_POST["tunnus"], $_POST["salasana"]));
 	$kayttaja = $kysely->fetchObject();
@@ -20,6 +21,7 @@ if (isset($_POST['tunnus']) && !empty($_POST['tunnus'] && !empty($_POST['salasan
 		header("Location: sisalto.php");
 		die();
 		} 
+	}
 } 
 
 ?>
