@@ -6,7 +6,7 @@ if (!isset($_SESSION["kayttaja"])) {
 }
 if (isset($_POST["varmistus"])) {
     if ($_POST["varmistus"] == 'e'){
-	header("Location: ulos.php");
+	header("Location: sisalto.php");
     die();
 	}
 	else {
@@ -38,7 +38,6 @@ catch (PDOException $e) {
 	header("Location: eka.html");
 	die();
 }
-
 
 if (!isset($_SESSION['varmistus'])){
 	try{
