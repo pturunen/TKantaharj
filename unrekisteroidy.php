@@ -49,11 +49,9 @@ catch (PDOException $e) {
    die();
 }	
 	if ($onnistuiko) {
-		if ($kayttaja) {
 		    unset($_SESSION["kayttaja"]);
 			unset($_SESSION["kayttaja_id"]);
 			unset($_SESSION["varmistus"]);
-		} 
 	}
 	header("Location: eka.html");
 	die();
