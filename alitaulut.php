@@ -92,6 +92,7 @@ echo "Virhe:Ravintoainetta ei annettu!";
 }
 
 ?>
+<p><a href="satunnainenkavija.php">Edellinen sivu</a></p>
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
 

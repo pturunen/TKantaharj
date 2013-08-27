@@ -54,6 +54,6 @@ if (isset($_SESSION["kayttaja"])) {
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos <br></a>";
 }
 ?>
-<p><a href="satunnainenkavija.php">Edellinen sivu</a></p>
+
 <p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
