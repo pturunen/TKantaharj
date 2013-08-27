@@ -9,7 +9,7 @@ if (isset($_POST["varmistus"])) {
 	header("Location: sisalto.php");
     die();
 	}
-	$_SESSION['varmistus'] = true;
+	$_SESSION['varmistus'] = 'poista';
 }
 // yhteyden muodostus tietokantaan
 try {
@@ -39,10 +39,10 @@ if (!isset($_SESSION['varmistus'])){
 			<?php
 		} 
 }
-if (isset($_SESSION['varmistus'])){
+if (isset($_SESSION['varmistus']) && $_SESSION['varmistus'] = 'poista'){
 try {
-    $kysely = $yhteys->prepare('DELETE from rekisteri where tunnus = ?');
-    $onnistuiko = $kysely->execute(array($_SESSION["kayttaja"]));
+    $kysely2 = $yhteys->prepare('DELETE from rekisteri where tunnus = ?');
+    $onnistuiko = $kysely2->execute(array($_SESSION["kayttaja"]));
 }
 catch (PDOException $e) {
    header("Location: eka.html");
