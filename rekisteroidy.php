@@ -35,12 +35,13 @@ if (isset($_POST['tunnus']) && isset($_POST['salasana']) && !empty($_POST['tunnu
 }
 catch (PDOException $e) {
    header("rekisteroidy.html");
-   echo "<script>alert('Virheellinen tunnus/salasana!');</script>";
+   //echo "<script>alert('Virheellinen tunnus/salasana!');</script>";
+   die();
 }	
 }
 else {
 header("rekisteroidy.html");
-echo "<script>alert('Virheellinen tunnus/salasana!');</script>";
+//echo "<script>alert('Virheellinen tunnus/salasana!');</script>";
 //header("Location: eka.html");
 die();
 }
