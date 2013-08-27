@@ -9,7 +9,9 @@ if (isset($_POST["varmistus"])) {
 	header("Location: ulos.php");
     die();
 	}
+	else {
 	$_SESSION['varmistus'] = 'poista';
+	}
 }
 // yhteyden muodostus tietokantaan
 try {
