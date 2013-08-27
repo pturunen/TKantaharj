@@ -19,6 +19,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if (!isset($_SESSION['varmistus'])){
 	try{
 	$kysely = $yhteys->prepare('SELECT id FROM rekisteri WHERE tunnus = ?');
 		$kysely->execute(array($_SESSION["kayttaja"]));
@@ -37,7 +38,8 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			</form>
 			<?php
 		} 
-	if (isset($_SESSION['varmistus'])){
+}
+if (isset($_SESSION['varmistus'])){
 try {
     $kysely = $yhteys->prepare('DELETE from rekisteri where tunnus = ?');
     $onnistuiko = $kysely->execute(array($_SESSION["kayttaja"]));
