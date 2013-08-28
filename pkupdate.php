@@ -22,8 +22,16 @@ catch (PDOException $e) {
    echo "<script>alert('No nyt pomppas energian saannin update ei onnistu');</script>";
 }
 try {
+$paino = $_POST['paino'];
+$selite = $_POST['selite'];
+if (empty($_POST['paino'])){
+$paino=0;
+}
+if (empty($_POST['selite'])){
+$selite=' ';
+}
 	$kysely = $yhteys->prepare('UPDATE tapahtumapaiva SET paino = ?, selite = ? WHERE  paiva= ?');
-    $kysely->execute(array($_POST['paino'],$_POST['selite'],$_SESSION['muokattavapaiva']));
+    $kysely->execute(array($paino,$selite,$_SESSION['muokattavapaiva']));
 	}
 catch (PDOException $e) {
    echo "<script>alert('No nyt pomppas tapahtumapaivan update ei onnistu');</script>";
