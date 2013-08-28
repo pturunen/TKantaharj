@@ -32,6 +32,7 @@ if ($poista){
 		$kysely = $yhteys->prepare('SELECT tapid FROM energiansaanti WHERE id = ?');
 		$kysely->execute(array("{$erivi}"));
 		$tapahtumaid = $kysely->fetchObject();
+		$tapahtumaid = $tapahtumaid->id;
 		}
 		catch (PDOException $e) {
 			echo "<script>alert('ei löydy tapid energiansaantitaulusta joka vastaa tapahtumataulua');</script>";
@@ -45,7 +46,7 @@ if ($poista){
 		}
 		try{
 			$kyselyvah = $yhteys->prepare('SELECT * from energiansaanti WHERE tapid = ?');
-			$kyselyvah->execute(array($_SESSION['kayttaja'],$tapahtumaid->id));
+			$kyselyvah->execute(array($_SESSION['kayttaja'],$tapahtumaid));
 			$vastaus = $kyselyvah->fetchObject();
 		}
 		catch (PDOException $e) {
@@ -54,7 +55,7 @@ if ($poista){
 		if(!$vastaus){
 		try{
 			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id not in (select tapid from energiansaanti;)');
-			$kysely->execute(array($_SESSION['kayttaja'],$tapahtumaid->id));
+			$kysely->execute(array($_SESSION['kayttaja'],$tapahtumaid));
 		}
 		catch (PDOException $e) {
 			echo "<script>alert('Tapahtumapaiva taulun rivilla ei enää viittauksia energiansaantitauluun,poisto epäonnistui');</script>";
