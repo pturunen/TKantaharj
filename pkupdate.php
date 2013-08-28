@@ -17,13 +17,17 @@ $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  try{
 	$kysely = $yhteys->prepare('UPDATE energiansaanti SET ruoka = ?, maara = ? WHERE id = ?');
     $kysely->execute(array($_POST['ruoka'],$_POST['maara'],$_SESSION['muokattavaid']));
+	}
+catch (PDOException $e) {
+   echo "<script>alert('No nyt pomppas energian saannin update ei onnistu');</script>";
+}
+try {
 	$kysely = $yhteys->prepare('UPDATE tapahtumapaiva SET paino = ?, selite = ? WHERE  paiva= ?');
     $kysely->execute(array($_POST['paino'],$_POST['selite'],$_SESSION['muokattavapaiva']));
 	}
 catch (PDOException $e) {
-   echo "<script>alert('No nyt pomppas');</script>";
+   echo "<script>alert('No nyt pomppas tapahtumapaivan update ei onnistu');</script>";
 }
-
 //hae kyselyllä muutettu rivi
 try {
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
