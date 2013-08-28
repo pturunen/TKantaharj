@@ -54,7 +54,7 @@ if ($poista){
 		if(!$vastaus){
 		try{
 			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id = ?');
-			$kysely->execute(array($_SESSION['kayttaja'],$tapahtumaid->id)));
+			$kysely->execute(array($_SESSION['kayttaja'],$tapahtumaid->id));
 		}
 		catch (PDOException $e) {
 			echo "<script>alert('Tapahtumapaiva taulun rivilla ei enää viittauksia energiansaantitauluun,poisto epäonnistui');</script>";
