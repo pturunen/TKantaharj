@@ -48,7 +48,8 @@ try {
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
-    echo "VIRHE: " . $e->getMessage();
+    //echo "VIRHE: " . $e->getMessage();
+	echo "Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona! <br>";
 }
 	if (empty($rivi)){
 	echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
