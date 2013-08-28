@@ -124,7 +124,8 @@ else {
 		<td>ENERGIAN SAANTI KJ</td>
 		</tr>
 		<?php while (  $rivi  ) {
-		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] ?>
+		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] 
+		   $yhteensa =$saatuenergia+$yhteensa ?>
 			<tr>
 			<td><?php echo $rivi["paiva"]?></td>
 			<td><?php echo $rivi["paino"]?> </td>
@@ -137,6 +138,8 @@ else {
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
 		</table>
+		Kj yhteensä:<?php echo $yhteensa?>
+		
 		<br>
       </fieldset>
 	
@@ -153,7 +156,7 @@ else {
     </form>
 	
     <footer>
-	<p><a href="paivakirja.php">Peruuta</a></p>
+	<p><a href="paivakirja.php">Edellinen sivu</a></p>
 	<p><a href="haku.php">Siirry tuotehaku sivulle</a></p>
     <p><a href="eka.html">Takaisin etusivulle</a></p>
     </footer>
