@@ -138,7 +138,7 @@ else {
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
 		</table>
-		Kj yhteensä:<?php echo $yhteensa?>
+								Kj yhteensä:<?php echo $yhteensa?>
 		
 		<br>
       </fieldset>
