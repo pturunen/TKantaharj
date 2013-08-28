@@ -62,6 +62,7 @@ else {
 echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt tietokannasta,ole hyvä ja lisää ruoka-aine ennen tapahtuman kirjaamista');</script>";
 }	
 }
+
 //tapahtumapaivan rivien paivitys naytolle joka kerta
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
 	if (!empty($_POST['paiva'])){
@@ -77,7 +78,7 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	$rivi = $kysely->fetch();
 	}
 	 catch (PDOException $e) {
-	 echo "<script>alert('Tapahtumien haku tietokannasta epäonnistui');</script>";
+	 echo "<script>alert('Annetulla päivällä ei vielä tapahtumia');</script>";
 }
 }
 else {
