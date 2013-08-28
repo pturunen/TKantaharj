@@ -124,8 +124,8 @@ else {
 		<td>ENERGIAN SAANTI KJ</td>
 		</tr>
 		<?php while (  $rivi  ) {
-		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"] 
-		   $yhteensa =$saatuenergia+$yhteensa ?>
+		   $saatuenergia = ($rivi["pmaara"]/100)*$rivi["emaara"]; 
+		   $yhteensa = $saatuenergia+$yhteensa ;?>
 			<tr>
 			<td><?php echo $rivi["paiva"]?></td>
 			<td><?php echo $rivi["paino"]?> </td>
