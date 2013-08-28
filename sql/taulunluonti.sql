@@ -38,7 +38,7 @@ CREATE TABLE energiansaanti (
 -- perusravintoaine taulun luonti
 CREATE TABLE perusravintoaineet (
   id serial ,
-  ravintotekija varchar(30) NOT NULL UNIQUE ,
+  ravintotekija varchar(30) NOT NULL,
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(10),
   maara real,
