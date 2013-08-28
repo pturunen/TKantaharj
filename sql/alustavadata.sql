@@ -6,10 +6,13 @@ values (DATE(NOW()),'pallero',45,'uusi elämä');
 
 INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
 values ('grillikylki','teollisuus','lihavalmisteet','luomu');
+INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
+values ('silakka','teollisuus','kalat','kerran viikossa');
 
 INSERT INTO perusravintoaineet (ravintotekija,nimi,mittayksikko,maara)
 values ('energia','grillikylki','kj/100 g','3000');
-
+INSERT INTO perusravintoaineet (ravintotekija,nimi,mittayksikko,maara)
+values ('energia','silakka','kj/100 g','10');
 INSERT INTO raakaaine (nimi,valmistaja,luokka,selite)
 values ('rasvaton maito','teollisuus','maidot','rasvaa alle 2%');
 
