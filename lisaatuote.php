@@ -18,7 +18,7 @@ $nimi = ($_POST['nimi']);
 $nimi = htmlspecialchars($nimi);
 try {
     $kysely = $yhteys->prepare('INSERT INTO raakaaine (nimi,valmistaja,luokka,selite) VALUES (?,?,?,?)');
-    $onnistuiko = $kysely->execute(array($_POST["nimi"], $_POST["valmistaja"],$_POST["luokka"],$_POST["selite"]));
+    $onnistuiko = $kysely->execute(array("{$nimi}", $_POST["valmistaja"],$_POST["luokka"],$_POST["selite"]));
 	$kysely2 = $yhteys->prepare('INSERT INTO perusravintoaineet (ravintotekija,nimi,mittayksikko,maara) VALUES (?,?,?,?)');
     $onnistuiko2 = $kysely2->execute(array('energia', "{$nimi}",'Kj/100g',$_POST["maara"]));
 }
