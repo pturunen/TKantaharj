@@ -78,7 +78,7 @@ $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS pai
 	$rivi = $kysely->fetch();
 	}
 	 catch (PDOException $e) {
-	 echo "<script>alert('Annetulla päivällä ei vielä tapahtumia');</script>";
+	 //echo "<script>alert('Annetulla päivällä ei vielä tapahtumia');</script>";
 }
 }
 else {
