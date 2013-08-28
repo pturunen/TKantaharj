@@ -14,7 +14,8 @@ try {
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['nimi'])) {
-$nimi = htmlspecialchars($_POST['nimi']);
+$nimi = ($_POST['nimi']);
+$nimi = htmlspecialchars($nimi);
 try {
     $kysely = $yhteys->prepare('INSERT INTO raakaaine (nimi,valmistaja,luokka,selite) VALUES (?,?,?,?)');
     $onnistuiko = $kysely->execute(array($_POST["nimi"], $_POST["valmistaja"],$_POST["luokka"],$_POST["selite"]));
