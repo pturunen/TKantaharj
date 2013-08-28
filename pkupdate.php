@@ -30,8 +30,8 @@ $paino=0;
 if (empty($_POST['selite'])){
 $selite=' ';
 }
-	$kysely = $yhteys->prepare('UPDATE tapahtumapaiva SET paino = ?, selite = ? WHERE  paiva= ?');
-    $kysely->execute(array($paino,$selite,$_SESSION['muokattavapaiva']));
+	$kysely = $yhteys->prepare('UPDATE tapahtumapaiva SET paino = ?, selite = ? WHERE  paiva= ? and tunnus = ?');
+    $kysely->execute(array($paino,$selite,$_SESSION['muokattavapaiva'],$_SESSION["kayttaja"]));
 	}
 catch (PDOException $e) {
    echo "<script>alert('No nyt pomppas tapahtumapaivan update ei onnistu');</script>";
@@ -41,9 +41,9 @@ try {
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
 	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
 	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
-	WHERE energiansaanti.id = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
+	WHERE tapahtumapaiva.tunnus = ?,energiansaanti.id = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
 	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
-    $kysely->execute(array($_SESSION['muokattavaid'],'energia' ));
+    $kysely->execute(array($_SESSION["kayttaja"],$_SESSION['muokattavaid'],'energia' ));
 	$rivi = $kysely->fetch();
 }
 catch (PDOException $e) {
