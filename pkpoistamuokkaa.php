@@ -31,25 +31,25 @@ if ($poista){
 		try {
 		$kysely = $yhteys->prepare('SELECT tapid FROM energiansaanti WHERE id = ?');
 		$kysely->execute(array("{$erivi}"));
-		$tapahtumaid = $kysely->fetch();
+		$tapahtumaid = $kysely->fetchObject();
 		}
 		catch (PDOException $e) {
-			//echo "<script>alert('No nyt pomppas');</script>";
+			echo "<script>alert('ei löydy tapid energiansaantitaulusta joka vastaa tapahtumataulua');</script>";
 		}
 		try{
 			$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
 			$kysely->execute(array("{$erivi}"));
 		}
 		catch (PDOException $e) {
-			echo "<script>alert('No nyt pomppas');</script>";
+			echo "<script>alert('deletointi energiansaanti taulusta epäonnistui');</script>";
 		}
 		try{
 			$kyselyvah = $yhteys->prepare('SELECT * from energiansaanti WHERE tapid = ?');
 			$kyselyvah->execute(array($_SESSION['kayttaja'],$tapahtumaid->id));
-			$vastaus = $kyselyvah->fetch();
+			$vastaus = $kyselyvah->fetchObject();
 		}
 		catch (PDOException $e) {
-			//echo "<script>alert('No nyt pomppas');</script>";
+			echo "<script>alert('');</script>";
 		}
 		if(!$vastaus){
 		try{
