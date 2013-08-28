@@ -32,7 +32,7 @@ CREATE TABLE raakaaine (
 -- paivakirjan rivin luonti
 CREATE TABLE energiansaanti (
   id serial  PRIMARY KEY,
-  tapid integer NOT NULL REFERENCES tapahtumapaiva(paiva,tunnus) ON DELETE CASCADE,
+  tapid integer NOT NULL REFERENCES tapahtumapaiva(id) ON DELETE CASCADE,
   ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   maara real
 );
