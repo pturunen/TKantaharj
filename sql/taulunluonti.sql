@@ -15,10 +15,10 @@ CREATE TABLE rekisteri (
 CREATE TABLE tapahtumapaiva (
   id serial,
   paiva date NOT NULL DEFAULT current_date,
-  tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
+  tunnus varchar(10) NOT NULL REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paino real,
   selite varchar(50),
-  PRIMARY KEY(paiva,tunnus)
+  PRIMARY KEY(id)
 );
 
 -- raakaaine taulun luonti
@@ -32,10 +32,9 @@ CREATE TABLE raakaaine (
 -- paivakirjan rivin luonti
 CREATE TABLE energiansaanti (
   id serial  PRIMARY KEY,
-  tapid integer ,
+  tapid integer NOT NULL REFERENCES tapahtumapaiva(paiva,tunnus) ON DELETE CASCADE,
   ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
-  maara real,
-  FOREIGN KEY(tapid) REFERENCES tapahtumapaiva(paiva,tunnus) ON DELETE CASCADE
+  maara real
 );
 
 -- perusravintoaine taulun luonti
