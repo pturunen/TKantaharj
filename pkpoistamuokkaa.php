@@ -38,7 +38,7 @@ if ($poista){
 		}
 		
 		try{
-			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id not in (select tapid from energiansaanti;)');
+			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id not in (select tapid from energiansaanti)');
 			$kysely->execute(array($_SESSION['kayttaja']);
 		}
 		catch (PDOException $e) {
