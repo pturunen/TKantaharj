@@ -32,9 +32,10 @@ CREATE TABLE raakaaine (
 -- paivakirjan rivin luonti
 CREATE TABLE energiansaanti (
   id serial  PRIMARY KEY,
-  tapid integer REFERENCES tapahtumapaiva(id) ON DELETE CASCADE,
+  tapid integer,
   ruoka varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
-  maara real
+  maara real,
+  foreign key(tapid) references tapahtumapaiva(id) ON DELETE CASCADE;
 );
 
 -- perusravintoaine taulun luonti
