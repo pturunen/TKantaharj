@@ -13,7 +13,8 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+$poista = false;
+$muokkaa = false;
 if (!empty($_POST['listapois'])){
 $listapoistettava = $_POST['listapois'];
 $poista = true;
@@ -25,34 +26,37 @@ $muokkaa = true;
 if (!$poista && !$muokkaa){
 echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</script>";
 }
-foreach($listapoistettava as $erivi){
- try{
-	$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
-    $kysely->execute(array("{$erivi}"));
+if ($poista){
+	foreach($listapoistettava as $erivi){
+		try{
+			$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
+			$kysely->execute(array("{$erivi}"));
+		}
+		catch (PDOException $e) {
+			echo "<script>alert('No nyt pomppas');</script>";
+		}
 	}
-catch (PDOException $e) {
-   echo "<script>alert('No nyt pomppas');</script>";
 }
-}
-foreach($listamuokattava as $mrivi){
-}
-if ("{$mrivi}"){
-//hae kyselyllä muutettava rivi, korjaa ruksi valintaa siten etta vain yksi ruksi muokattavaksi kerrallaan
-try {
-	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
-	energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
-	FROM tapahtumapaiva,energiansaanti, perusravintoaineet
-	WHERE energiansaanti.id = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
-	perusravintoaineet.ravintotekija = ? ORDER BY paiva');
-    $kysely->execute(array("{$mrivi}",'energia' ));
-	$rivi = $kysely->fetch();
-}
-catch (PDOException $e) {
-    echo "VIRHE: " . $e->getMessage();
-}
+if ($muokkaa){
+	foreach($listamuokattava as $mrivi){
+	}
+	if ("{$mrivi}"){
+	//hae kyselyllä muutettava rivi, korjaa ruksi valintaa siten etta vain yksi ruksi muokattavaksi kerrallaan
+	try {
+		$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
+		energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
+		FROM tapahtumapaiva,energiansaanti, perusravintoaineet
+		WHERE energiansaanti.id = ? and tapahtumapaiva.id = energiansaanti.tapid  and energiansaanti.ruoka = perusravintoaineet.nimi and 
+		perusravintoaineet.ravintotekija = ? ORDER BY paiva');
+		$kysely->execute(array("{$mrivi}",'energia' ));
+		$rivi = $kysely->fetch();
+	}
+	catch (PDOException $e) {
+		//echo "VIRHE: " . $e->getMessage();
+		echo "<script>alert('Päiväkirjan tapahtuman muokkaus epäonnistui');</script>";
+	}
 	if (empty($rivi)){
-	
-	echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
+		echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
 	}
 	else { 
 		?>
@@ -120,6 +124,7 @@ catch (PDOException $e) {
   </html>		
 <?php
 	}
+}
 }	
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
@@ -128,9 +133,6 @@ catch (PDOException $e) {
     //echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos<br></a>";
 	}
-
-
-
 ?>
 <p><a href="haku.php">siirry raaka-aine hakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
