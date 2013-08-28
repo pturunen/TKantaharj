@@ -28,6 +28,14 @@ echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</scrip
 }
 if ($poista){
 	foreach($listapoistettava as $erivi){
+		try {
+		$kysely = $yhteys->prepare('SELECT tapid FROM energiansaanti WHERE id = ?');
+		$kysely->execute(array("{$erivi}"));
+		$tapahtumaid = $kysely->fetch();
+		}
+		catch (PDOException $e) {
+			//echo "<script>alert('No nyt pomppas');</script>";
+		}
 		try{
 			$kysely = $yhteys->prepare('DELETE FROM energiansaanti WHERE id = ?');
 			$kysely->execute(array("{$erivi}"));
@@ -35,13 +43,29 @@ if ($poista){
 		catch (PDOException $e) {
 			echo "<script>alert('No nyt pomppas');</script>";
 		}
+		try{
+			$kyselyvah = $yhteys->prepare('SELECT * from energiansaanti WHERE tapid = ?');
+			$kyselyvah->execute(array($_SESSION['kayttaja'],$tapahtumaid->id));
+			$vastaus = $kyselyvah->fetch();
+		}
+		catch (PDOException $e) {
+			//echo "<script>alert('No nyt pomppas');</script>";
+		}
+		if(!$vastaus){
+		try{
+			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id = ?');
+			$kysely->execute(array($_SESSION['kayttaja'],$tapahtumaid->id)));
+		}
+		catch (PDOException $e) {
+			echo "<script>alert('Tapahtumapaiva taulun rivilla ei enää viittauksia energiansaantitauluun,poisto epäonnistui');</script>";
+		}
+		}
 	}
 }
 if ($muokkaa){
 	foreach($listamuokattava as $mrivi){
 	}
 	if ("{$mrivi}"){
-	//hae kyselyllä muutettava rivi, korjaa ruksi valintaa siten etta vain yksi ruksi muokattavaksi kerrallaan
 	try {
 		$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
 		energiansaanti.ruoka AS ruoka, energiansaanti.maara AS emaara,energiansaanti.id as eid, perusravintoaineet.maara as pmaara
