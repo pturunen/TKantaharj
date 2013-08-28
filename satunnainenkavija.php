@@ -50,7 +50,11 @@ catch (PDOException $e) {
 	}
 }
 if (isset($_SESSION["kayttaja"])) {
+    echo "<a <br> </a>";
     echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote <br></a>";
+	echo "<a <br> </a>";
+	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"paivakirja.php\">Siirry paivakirjan sivuille <br></a>";
+	echo "<a <br> </a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos <br></a>";
 }
 ?>

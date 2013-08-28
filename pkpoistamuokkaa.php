@@ -51,6 +51,7 @@ catch (PDOException $e) {
     echo "VIRHE: " . $e->getMessage();
 }
 	if (empty($rivi)){
+	
 	echo "<script>alert('Päiväkirjassa ei ole tapahtumia annettuna ajanjaksona!');</script>";
 	}
 	else { 
