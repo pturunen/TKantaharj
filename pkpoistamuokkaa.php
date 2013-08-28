@@ -31,7 +31,7 @@ if ($poista){
 		try {
 		$kysely = $yhteys->prepare('SELECT tapid FROM energiansaanti WHERE id = ?');
 		$kysely->execute(array("{$erivi}"));
-		$tapahtumaid = $kysely->fetchObject();
+		$tapahtumaid = $kysely->fetch;
 		}
 		catch (PDOException $e) {
 			echo "<script>alert('ei löydy tapid energiansaantitaulusta joka vastaa tapahtumataulua');</script>";
@@ -49,7 +49,7 @@ if ($poista){
 			$vastaus = $kyselyvah->fetchObject();
 		}
 		catch (PDOException $e) {
-			echo "<script>alert('');</script>";
+			echo "<script>alert('tapahtumapaiva taulusta rivin etsiminen epäonnistui');</script>";
 		}
 		if(!$vastaus){
 		try{
