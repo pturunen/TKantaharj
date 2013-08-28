@@ -49,11 +49,11 @@ if ($poista){
 			$vastaus = $kyselyvah->fetchObject();
 		}
 		catch (PDOException $e) {
-			echo "<script>alert('tapahtumapaiva taulusta rivin etsiminen epäonnistui');</script>";
+			echo "<script>alert('tapahtumapaiva rivilla ei enaa viittauksia energiatauluun');</script>";
 		}
 		if(!$vastaus){
 		try{
-			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id = ?');
+			$kysely = $yhteys->prepare('DELETE FROM tapahtumapaiva WHERE tunnus = ? and id not in (select tapid from energiansaanti;)');
 			$kysely->execute(array($_SESSION['kayttaja'],$tapahtumaid->id));
 		}
 		catch (PDOException $e) {
