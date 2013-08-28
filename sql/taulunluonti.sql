@@ -1,22 +1,24 @@
 --rekisteri taulun luonti
 CREATE TABLE rekisteri (
-  id serial PRIMARY KEY,
+  id serial,
   tunnus varchar(10) NOT NULL UNIQUE,
   salasana varchar(18) NOT NULL,
   luontipvm date NOT NULL DEFAULT current_date,
   sukupuoli varchar(1),
   pituus real,
   paino real,
-  ika int
+  ika int,
+  PRIMARY KEY(tunnus,salasana)
 );
 
 -- paivakirjan taulun luonti
 CREATE TABLE tapahtumapaiva (
-  id serial PRIMARY KEY,
+  id serial,
   paiva date NOT NULL DEFAULT current_date,
   tunnus varchar(10) REFERENCES rekisteri(tunnus) ON DELETE CASCADE,
   paino real,
-  selite varchar(50)
+  selite varchar(50),
+  PRIMARY KEY(paiva,tunnus)
 );
 
 -- raakaaine taulun luonti
@@ -52,5 +54,5 @@ CREATE TABLE kivhivenaineet (
   nimi varchar(40) REFERENCES raakaaine(nimi) ON DELETE CASCADE,
   mittayksikko varchar(10),
   maara real,
-  PRIMARY KEY(id,ravintotekija)
+  PRIMARY KEY(ravintotekija,nimi)
 );
