@@ -59,5 +59,5 @@ if (isset($_SESSION["kayttaja"])) {
 }
 ?>
 
-<p><a href="satunnainen.html">Tuotehakuun takaisin</a></p>
+<p><a href="satunnainen.html">Raaka-aine hakuun takaisin</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
