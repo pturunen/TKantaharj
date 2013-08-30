@@ -1,9 +1,7 @@
 <?php
-session_start();
-if (!isset($_SESSION["kayttaja"])) {
-    header("Location: eka.html");
-    die();
-}
+require 'yhteys.php';
+
+
 if (isset($_POST["varmistus"])) {
     if ($_POST["varmistus"] == 'e'){
 	header("Location: sisalto.php");
@@ -13,15 +11,6 @@ if (isset($_POST["varmistus"])) {
 	$_SESSION['varmistus'] = 'poista';
 	}
 }
-// yhteyden muodostus tietokantaan
-try {
-    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
-                      "pcturune", "42c747d22fbafe6e");
-} catch (PDOException $e) {
-    die("VIRHE: " . $e->getMessage());
-}
-
-$yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_SESSION['varmistus']) && $_SESSION['varmistus'] == 'poista'){
 try {

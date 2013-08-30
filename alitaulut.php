@@ -1,14 +1,6 @@
 <?php
-session_start();
-header("Content-Type: text/html; charset=UTF-8");
-// yhteyden muodostus tietokantaan
-try {
-    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
-                      "pcturune", "42c747d22fbafe6e");
-} catch (PDOException $e) {
-    die("VIRHE: " . $e->getMessage());
-}
-$yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require 'yhteys.php';
+
 if (isset($_GET['nimiparametri']) || isset($_SESSION['hakualikey'])){
 	if (isset($_GET['nimiparametri'])){
 		$_SESSION['hakualikey'] = $_GET['nimiparametri'];

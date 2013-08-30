@@ -1,13 +1,6 @@
 <?php
-session_start();
-header("Content-Type: text/html; charset=UTF-8");
-try {
-    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
-                      "pcturune", "42c747d22fbafe6e");
-} catch (PDOException $e) {
-    die("VIRHE: " . $e->getMessage());
-}
-$yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require 'yhteyseik.php';
+
 if (isset($_POST['nimi']) || isset($_SESSION['hakukey'])){
 	if (isset($_POST['nimi'])){
 		$_SESSION['hakukey'] = $_POST['nimi'];

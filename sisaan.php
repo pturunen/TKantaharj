@@ -1,15 +1,5 @@
 <?php
-session_start();
-
-// yhteyden muodostus tietokantaan
-try {
-    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
-                      "pcturune", "42c747d22fbafe6e");
-} catch (PDOException $e) {
-    die("VIRHE: " . $e->getMessage());
-}
-$yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+require 'yhteys.php';
 if (isset($_POST['tunnus']) && !empty($_POST['tunnus']) && !empty($_POST['salasana'])) {
     if (strlen($_POST['tunnus']) > 0 && strlen($_POST['salasana']) > 0){
 try {	
