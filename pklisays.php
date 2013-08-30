@@ -166,7 +166,7 @@ else {
 	
     <footer>
 	<p><a href="paivakirja.php">Edellinen sivu</a></p>
-	<p><a href="haku.php">Siirry tuotehaku sivulle</a></p>
+	<p><a href="haku.php">Siirry raaka-aine haun sivulle</a></p>
     <p><a href="eka.html">Takaisin etusivulle</a></p>
     </footer>
   </body>
