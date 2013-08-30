@@ -40,7 +40,7 @@ if (!isset($_SESSION["kayttaja"])) {
 	  <label for="nimik">Raakaineen nimi :</label>
 	  <input type="text" name="nimik" value= <?php echo $_SESSION['tuotenimi']; ?> > <br>
 	  <label for="maarak">Määrä :</label>
-	  <input type="real" name="maarak"> <br>
+	  <input type="real" name="maarak" value="0.0"> <br>
 	  <label for="mittayksikkok">Mittayksikkö :</label>
 	  <input type="text" name="mittayksikkok"> <br>
 	  

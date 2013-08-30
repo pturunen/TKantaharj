@@ -4,6 +4,7 @@ if (!isset($_SESSION["kayttaja"])) {
     header("Location: eka.html");
     die();
 }
+
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
                       "pcturune", "42c747d22fbafe6e");

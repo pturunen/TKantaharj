@@ -12,14 +12,15 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) ) {
+
+//Ensimmäinen valinnaisista lisättävistä
+if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) && !empty($_POST['nimip']) && !empty($_POST['ravintotekijap'])) {
 	try{
     $kysely = $yhteys->prepare('INSERT INTO perusravintoaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikop = $kysely->execute(array($_POST["ravintotekijap"], $_POST["nimip"],$_POST["maarap"],$_POST["mittayksikkop"]));
 	}
 	catch (PDOException $e) {
-    //echo "VIRHE: " . $e->getMessage();
-	echo "<script>alert('Lisays ei onnistunut!');</script>";
+	echo "<script>alert('Lisays ei onnistunut perusravintoaineen kohdalla!');</script>";
 	}
 }
 try {
@@ -50,15 +51,18 @@ try {
 		$rivip = $kysely->fetch();
 		}
 		echo "</table>";
- if (isset($_POST['nimik']) && isset($_POST['ravintotekijak']) ) {
+		
+//Toinen valinnaisista 	lisättävistä	
+ if (isset($_POST['nimik']) && isset($_POST['ravintotekijak'])  && !empty($_POST['nimip']) && !empty($_POST['ravintotekijak'])) {
     try{
     $kyselyk = $yhteys->prepare('INSERT INTO kivhivenaineet (ravintotekija,nimi,maara,mittayksikko) VALUES (?,?,?,?)');
     $onnistuikok = $kyselyk->execute(array($_POST["ravintotekijak"], $_POST["nimik"],$_POST["maarak"],$_POST["mittayksikkok"]));
 	}
 	catch (PDOException $e) {
-     //echo "VIRHE: " . $e->getMessage();
+     echo "<script>alert('Lisays ei onnistunut kivennäis ja hivenaineen kohdalla!');</script>";
     }
 }
+
 try{
 	$kyselyk = $yhteys->prepare('SELECT * FROM kivhivenaineet WHERE nimi =  ?');
 	$tulos = $kyselyk->execute(array($_POST['nimik']));
