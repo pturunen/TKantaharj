@@ -93,7 +93,7 @@ catch(PDOException $e) {
 	echo "</table>";
 ?>
 <p><a href="lisaaalituote2.php">Lisaa ravintoaineita</a></p>
-<p><a href="lisaatuote.html">Lisaa uusi tuote</a></p>
-<p><a href="haku.php">Tuotehakuun</a></p>
+<p><a href="lisaatuote.html">Lisaa uusi raaka-aine</a></p>
+<p><a href="haku.php">Siirry raaka-aine hakuun</a></p>
 <p><a href="eka.html">Takaisin etusivulle</a></p>
 <p><a href="ulos.php">Kirjaudu ulos</a></p>
