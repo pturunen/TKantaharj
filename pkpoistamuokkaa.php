@@ -13,19 +13,23 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//toiminnon valinta
 $poista = false;
 $muokkaa = false;
 if (!empty($_POST['listapois'])){
-$listapoistettava = $_POST['listapois'];
-$poista = true;
+	$listapoistettava = $_POST['listapois'];
+	$poista = true;
 }
 if (!empty($_POST['listamuokkaa'])){
-$listamuokattava = $_POST['listamuokkaa'];
-$muokkaa = true;
+	$listamuokattava = $_POST['listamuokkaa'];
+	$muokkaa = true;
 }	
+
 if (!$poista && !$muokkaa){
 echo "<script>alert('Et valinnut poistettavaa tai muokkattavaa riviä!');</script>";
 }
+//käsitellään poista toiminto
 if ($poista){
 	foreach($listapoistettava as $erivi){
 		
@@ -42,11 +46,13 @@ if ($poista){
 			$kysely->execute(array($_SESSION['kayttaja']));
 		}
 		catch (PDOException $e) {
-			echo "<script>alert('Tapahtumapaiva taulun rivilla ei enää viittauksia energiansaantitauluun,poisto epäonnistui');</script>";
+			echo "<script>alert('Tapahtumapaiva taulun rivin poisto epäonnistui');</script>";
 		}
 		
 	}
 }
+
+//käsitellään muokkaus toiminto
 if ($muokkaa){
 	foreach($listamuokattava as $mrivi){
 	}
@@ -61,7 +67,6 @@ if ($muokkaa){
 		$rivi = $kysely->fetch();
 	}
 	catch (PDOException $e) {
-		//echo "VIRHE: " . $e->getMessage();
 		echo "<script>alert('Päiväkirjan tapahtuman muokkaus epäonnistui');</script>";
 	}
 	if (empty($rivi)){

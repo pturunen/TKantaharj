@@ -5,6 +5,7 @@ if (!isset($_SESSION["kayttaja"])) {
     die();
 }
 header("Content-Type: text/html; charset=UTF-8");
+
 // yhteyden muodostus tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
@@ -14,28 +15,32 @@ try {
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+//energiansaanti rivin päivitys tietokantaan
  try{
 	$kysely = $yhteys->prepare('UPDATE energiansaanti SET ruoka = ?, maara = ? WHERE id = ?');
     $kysely->execute(array($_POST['ruoka'],$_POST['maara'],$_SESSION['muokattavaid']));
 	}
 catch (PDOException $e) {
-   echo "<script>alert('No nyt pomppas energian saannin update ei onnistu');</script>";
+   echo "<script>alert('tapahtuma rivin muokkaus epäonnistui');</script>";
 }
+
+
 try {
-$paino = $_POST['paino'];
-$selite = $_POST['selite'];
-if (empty($_POST['paino'])){
-$paino=0;
-}
-if (empty($_POST['selite'])){
-$selite=' ';
-}
+	$paino = $_POST['paino'];
+	$selite = $_POST['selite'];
+	if (empty($_POST['paino'])){
+		$paino=0;
+	}
+	if (empty($_POST['selite'])){
+		$selite=' ';
+	}
 	$kysely = $yhteys->prepare('UPDATE tapahtumapaiva SET paino = ?, selite = ? WHERE  paiva= ? and tunnus = ?');
     $kysely->execute(array($paino,$selite,$_SESSION['muokattavapaiva'],$_SESSION["kayttaja"]));
 	}
 catch (PDOException $e) {
-   echo "<script>alert('No nyt pomppas tapahtumapaivan update ei onnistu');</script>";
+	echo "<script>alert('Tapahtumapaivan päivitys epäonnistui');</script>";
 }
+
 //hae kyselyllä muutettu rivi
 try {
 	$kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
@@ -114,9 +119,7 @@ catch (PDOException $e) {
 	
 	$nimiparametri = $rivi["nimi"];
 	if (isset($_SESSION["kayttaja"])) {
-    //echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaaalituote2.php\">Lisaa ravintoaineelle lisätietoja <br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"paivakirja.php\">Paivakirja pääsivu <br></a>";
-    //echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"lisaatuote.html\">Lisaa uusi tuote<br></a>";
 	echo "<a border-style:\"solid\" style=\"color: blue\"  href=\"ulos.php\">Kirjaudu ulos<br></a>";
 	}
 ?>
