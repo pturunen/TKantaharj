@@ -33,7 +33,6 @@ catch (PDOException $e) {
 		echo "<table border>";
 		while ($rivi) {
 			echo "<tr>";
-			//echo "<td>" . $rivi["nimi"] . "</td>";
 			$muuttuja = $rivi["nimi"] ;
 			echo "<td>" . "<a border-style:\"solid\" style=\"color: blue\"  href=\"alitaulut.php?nimiparametri=$muuttuja\">$muuttuja</a>" . "</td>";
 			echo "<td>" . $rivi["valmistaja"] . "</td>";

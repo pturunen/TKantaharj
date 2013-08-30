@@ -4,7 +4,7 @@ if (!isset($_SESSION["kayttaja"])) {
     header("Location: eka.html");
     die();
 }
-
+//yhteyden luonti tietokantaan
 try {
     $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
                       "pcturune", "42c747d22fbafe6e");
@@ -12,6 +12,7 @@ try {
     die("VIRHE: " . $e->getMessage());
 }
 $yhteys->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 
 //lisayksen tarkistaminen ensin, sitten tapahtumat tulostetaan esille
 //1 tarkista onko ruoka ruokaaine taulussa
@@ -26,7 +27,7 @@ if (isset($_POST['ruoka'])){
 	}
 	
 if($rivi2) {
-//2 tarkista joko tapatumapaiva on lisatty
+//2 tarkista joko tapatumapaiva on lisatty eli onko ensimmäinen kirjaus päivälle
    try {
 		$kysely3 = $yhteys->prepare('SELECT * FROM tapahtumapaiva WHERE tunnus = ? and paiva = ?');
 		$kysely3->execute(array($_SESSION["kayttaja"],$_SESSION['lisayspaiva']));
@@ -36,14 +37,14 @@ if($rivi2) {
 		}
 	}
 	catch (PDOException $e) {
-		echo "<script>alert('No nyt pomppas');</script>";
+		//echo "<script>alert('Tapahtuman haku tietokannasta epäonnistui');</script>";
 	}
 	
 	if (!$rivi3) {
-	//eli lisaa tapahtumapaiva rivi ensin
+	//eli lisaa tapahtumapaiva rivi ensin koska ensimmäinen kirjaus päivälle
 	try {
 	$kysely4 = $yhteys->prepare('INSERT INTO tapahtumapaiva (paiva,tunnus,paino,selite) VALUES (?,?,?,?)');
-    $kysely4->execute(array($_SESSION['lisayspaiva'],$_SESSION["kayttaja"],$_POST['paino'],$_POST['selite']));
+    $kysely4->execute(array($_SESSION['lisayspaiva'],$_SESSION["kayttaja"],$_SESSION["paino"],$_SESSION["selite"]));
 	$_SESSION['tapahtumaid'] = $yhteys->lastInsertId("tapahtumapaiva_id_seq");
 	}
 	catch (PDOException $e) {
@@ -67,7 +68,13 @@ echo "<script>alert('Antamaasi ruoka-ainetta ei löytynyt tietokannasta,ole hyv�
 //tapahtumapaivan rivien paivitys naytolle joka kerta
 if (isset($_POST['paiva']) || isset($_SESSION['lisayspaiva'])){
 	if (!empty($_POST['paiva'])){
-	$_SESSION['lisayspaiva'] = $_POST['paiva'];
+		$_SESSION['lisayspaiva'] = $_POST['paiva'];
+	if (isset($_POST['paino']) && !empty($_POST['paino'])){
+		$_SESSION['paino'] = $_POST['paino'];
+	}
+	if (isset($_POST['selite']) && !empty($_POST['selite'])){
+		$_SESSION['selite'] = $_POST['selite'];
+	}
 	}
 	try {
 $kysely = $yhteys->prepare('SELECT tapahtumapaiva.id,tapahtumapaiva.paiva AS paiva,tapahtumapaiva.paino AS paino,tapahtumapaiva.selite AS seli,
@@ -138,7 +145,7 @@ else {
 			</tr>
 			<?php $rivi = $kysely->fetch();?>
 		<?}?>
-		<tr> Kj yhteensä:<?php echo $yhteensa?> </tr>
+		<tr> Kj yhteensä:<?php echo $yhteensa ?> </tr>
 		</table>
 		
 		
