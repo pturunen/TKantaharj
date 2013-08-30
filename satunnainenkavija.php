@@ -1,5 +1,5 @@
 <?php
-require 'yhteyseik.php';
+require 'yhteyseiks.php';
 
 if (isset($_POST['nimi']) || isset($_SESSION['hakukey'])){
 	if (isset($_POST['nimi'])){

@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 if (isset($_POST['tunnus']) && !empty($_POST['tunnus']) && !empty($_POST['salasana'])) {
     if (strlen($_POST['tunnus']) > 0 && strlen($_POST['salasana']) > 0){
 try {	

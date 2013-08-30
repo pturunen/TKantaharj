@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 //$paivays = date('Y-m-d');
 //$paivays = date("j.n.Y");
 //$aika = $yhteys->prepare('SELECT CURRENT_DATE AS n;');

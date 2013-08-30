@@ -4,8 +4,8 @@ session_start();
 header("Content-Type: text/html; charset=UTF-8");
 //yhteyden luonti tietokantaan
 try {
-    $yhteys = new PDO("pgsql:host=localhost;dbname=pcturune",
-                      "pcturune", "42c747d22fbafe6e");
+    $yhteys = new PDO("pgsql:host=localhost;dbname=Tietokanta",
+                      "Käyttäjätunnus", "Salasana");
 } catch (PDOException $e) {
     die("VIRHE: " . $e->getMessage());
 }

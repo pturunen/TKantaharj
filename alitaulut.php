@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 
 if (isset($_GET['nimiparametri']) || isset($_SESSION['hakualikey'])){
 	if (isset($_GET['nimiparametri'])){

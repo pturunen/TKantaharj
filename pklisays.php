@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 
 //lisayksen tarkistaminen ensin, sitten tapahtumat tulostetaan esille
 //1 tarkista onko ruoka ruokaaine taulussa

@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 
 //energiansaanti rivin päivitys tietokantaan
  try{

@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 
 
 if (isset($_POST["varmistus"])) {

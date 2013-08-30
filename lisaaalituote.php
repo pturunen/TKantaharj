@@ -1,5 +1,5 @@
 <?php
-require 'yhteys.php';
+require 'yhteyss.php';
 //Ensimmäinen valinnaisista lisättävistä
 if (isset($_POST['nimip'])  && isset($_POST['ravintotekijap']) && !empty($_POST['nimip']) && !empty($_POST['ravintotekijap'])) {
 	try{
